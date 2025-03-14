@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,49 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Sanatan Dharma inspired colors
+				saffron: {
+					50: '#fff8e6',
+					100: '#ffebb3',
+					200: '#ffde80',
+					300: '#ffd24d',
+					400: '#ffc51a',
+					500: '#e6a800',
+					600: '#b38300',
+					700: '#805e00',
+					800: '#4d3800',
+					900: '#1a1300',
+				},
+				gold: {
+					50: '#fbf8e6',
+					100: '#f7f1cc',
+					200: '#f2e7b3',
+					300: '#eede99',
+					400: '#e9d57f',
+					500: '#e5cc66',
+					600: '#dfc04c',
+					700: '#d9b732',
+					800: '#c6a41c',
+					900: '#a38717',
+				},
+				earth: {
+					50: '#f9f6f3',
+					100: '#f3ede7',
+					200: '#e7dcd0',
+					300: '#d8c5b0',
+					400: '#c8ae90',
+					500: '#b79872',
+					600: '#a38157',
+					700: '#8c6c4a',
+					800: '#755b3f',
+					900: '#5e4933',
 				}
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				serif: ['Playfair Display', 'serif'],
+				sanskrit: ['Poppins', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +127,26 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					from: { opacity: '0' },
+					to: { opacity: '1' }
+				},
+				'fade-up': {
+					from: { opacity: '0', transform: 'translateY(20px)' },
+					to: { opacity: '1', transform: 'translateY(0)' }
+				},
+				'page-transition': {
+					'0%': { transform: 'translateX(20px)', opacity: '0' },
+					'100%': { transform: 'translateX(0)', opacity: '1' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'fade-up': 'fade-up 0.6s ease-out',
+				'page-transition': 'page-transition 0.5s ease-out'
 			}
 		}
 	},
