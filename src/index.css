@@ -71,32 +71,32 @@
 
 /* Chapter card styling */
 .chapter-card {
-  @apply bg-white rounded-lg p-5 border border-earth-100 shadow-sm cursor-pointer transition-all duration-300;
+  @apply bg-white dark:bg-earth-800 rounded-lg p-5 border border-earth-100 dark:border-earth-700 shadow-sm cursor-pointer transition-all duration-300;
 }
 
 .chapter-card:hover {
-  @apply transform translate-y-[-4px] shadow-md border-saffron-200;
+  @apply transform translate-y-[-4px] shadow-md border-saffron-200 dark:border-saffron-700;
 }
 
 /* Verse styling */
 .verse-card {
-  @apply bg-white rounded-lg p-6 border border-earth-100 shadow-sm;
+  @apply bg-white dark:bg-earth-800 rounded-lg p-6 border border-earth-100 dark:border-earth-700 shadow-sm;
 }
 
 .verse-content {
-  @apply p-4 rounded-lg bg-earth-50 border border-earth-100;
+  @apply p-4 rounded-lg bg-earth-50 dark:bg-earth-800 border border-earth-100 dark:border-earth-700;
 }
 
 .sanskrit-text {
-  @apply font-sanskrit text-earth-900 leading-relaxed;
+  @apply font-sanskrit text-earth-900 dark:text-earth-50 leading-relaxed;
 }
 
 .hindi-text {
-  @apply text-earth-800 leading-relaxed;
+  @apply text-earth-800 dark:text-earth-200 leading-relaxed;
 }
 
 .english-text {
-  @apply text-earth-700 leading-relaxed;
+  @apply text-earth-700 dark:text-earth-300 leading-relaxed;
 }
 
 /* Tab button styling */
@@ -105,16 +105,16 @@
 }
 
 .tab-button-active {
-  @apply text-saffron-700 border-b-2 border-saffron-500;
+  @apply text-saffron-700 dark:text-saffron-500 border-b-2 border-saffron-500;
 }
 
 .tab-button-inactive {
-  @apply text-earth-600 hover:text-saffron-600;
+  @apply text-earth-600 dark:text-earth-400 hover:text-saffron-600 dark:hover:text-saffron-500;
 }
 
 /* Mobile layout styles */
 body {
-  @apply bg-earth-50;
+  @apply bg-earth-50 dark:bg-earth-900;
 }
 
 @keyframes fade-in {
@@ -124,6 +124,39 @@ body {
 
 .animate-fade-in {
   animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-fade-up {
+  animation: fade-in 0.5s ease-out forwards;
+  transform: translateY(20px);
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spin {
+  from { 
+    transform: rotate(0deg); 
+  }
+  to { 
+    transform: rotate(360deg); 
+  }
 }
 
 .font-sanskrit {
