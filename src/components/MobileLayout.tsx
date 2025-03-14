@@ -1,5 +1,5 @@
 
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import BottomNav from './BottomNav';
 
 interface MobileLayoutProps {
@@ -8,9 +8,21 @@ interface MobileLayoutProps {
 }
 
 const MobileLayout = ({ children, currentRoute }: MobileLayoutProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Add slight delay for page transition effect
+    setIsLoaded(false);
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [currentRoute]);
+
   return (
-    <div className="flex flex-col min-h-screen bg-earth-50 max-w-md mx-auto relative">
-      <main className="flex-1 pb-20">
+    <div className="flex flex-col min-h-screen bg-earth-50 max-w-md mx-auto relative overflow-hidden">
+      <main className={`flex-1 pb-20 transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         {children}
       </main>
       <BottomNav currentRoute={currentRoute} />
