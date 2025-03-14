@@ -1,17 +1,19 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, BookOpen } from 'lucide-react';
-import Header from '../components/Header';
+import { ArrowLeft, BookOpen, Check } from 'lucide-react';
 import VerseViewer from '../components/VerseViewer';
 import chapters from '../data/chapters';
 import { getVersesByChapter, getVerse } from '../data/verses';
+import MobileLayout from '../components/MobileLayout';
+import { markVerseAsRead, isVerseRead } from '../services/progressService';
 
 const ChapterView = () => {
   const { chapterId, verseId } = useParams();
   const [currentChapter, setCurrentChapter] = useState(chapters[0]);
   const [currentVerseNumber, setCurrentVerseNumber] = useState(1);
   const [currentVerse, setCurrentVerse] = useState(getVerse(1, 1));
+  const [isRead, setIsRead] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,6 +33,7 @@ const ChapterView = () => {
             const verse = getVerse(chapterNum, verseNum);
             if (verse) {
               setCurrentVerse(verse);
+              setIsRead(isVerseRead(chapterNum, verseNum));
             }
           } else {
             // Invalid verse number, redirect to verse 1
@@ -42,6 +45,7 @@ const ChapterView = () => {
           const verse = getVerse(chapterNum, 1);
           if (verse) {
             setCurrentVerse(verse);
+            setIsRead(isVerseRead(chapterNum, 1));
           }
           navigate(`/chapters/${chapterId}/1`);
         }
@@ -64,104 +68,106 @@ const ChapterView = () => {
     }
   };
 
+  const handleMarkAsRead = () => {
+    if (chapterId && verseId) {
+      markVerseAsRead(parseInt(chapterId), parseInt(verseId));
+      setIsRead(true);
+    }
+  };
+
   if (!currentVerse || !currentChapter) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="mb-4 text-saffron-500">
-            <BookOpen size={48} className="mx-auto" />
+      <MobileLayout currentRoute="/chapters">
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="mb-4 text-saffron-500">
+              <BookOpen size={48} className="mx-auto" />
+            </div>
+            <h2 className="text-2xl font-serif font-medium text-earth-900 mb-2">Loading verse...</h2>
+            <p className="text-earth-700">Please wait while we retrieve the wisdom.</p>
           </div>
-          <h2 className="text-2xl font-serif font-medium text-earth-900 mb-2">Loading verse...</h2>
-          <p className="text-earth-700">Please wait while we retrieve the wisdom.</p>
         </div>
-      </div>
+      </MobileLayout>
     );
   }
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      
-      <section className="pt-32 pb-20 px-4 sm:px-6 md:px-8 container-custom">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-8 animate-fade-in">
-            <button 
-              onClick={() => navigate('/chapters')}
-              className="inline-flex items-center text-earth-700 hover:text-saffron-700 transition-colors"
-            >
-              <ArrowLeft size={18} className="mr-1" />
-              Back to Chapters
-            </button>
-            
-            <div className="mt-4">
-              <span className="text-xs font-medium bg-saffron-100 text-saffron-800 rounded-full px-3 py-1">
-                Chapter {currentChapter.id}
-              </span>
-              <h1 className="mt-2 text-2xl md:text-3xl font-serif font-medium text-earth-900">
-                {currentChapter.name}
-              </h1>
-              <p className="mt-1 text-lg font-sanskrit text-earth-800">
-                {currentChapter.nameSanskrit}
-              </p>
-              <p className="mt-3 text-earth-700 max-w-3xl">
-                {currentChapter.description}
-              </p>
-            </div>
-          </div>
+    <MobileLayout currentRoute="/chapters">
+      <div className="pt-8 px-4 pb-8">
+        <div className="mb-6">
+          <button 
+            onClick={() => navigate('/chapters')}
+            className="inline-flex items-center text-earth-700 hover:text-saffron-700 transition-colors"
+          >
+            <ArrowLeft size={18} className="mr-1" />
+            Back to Chapters
+          </button>
           
-          {currentVerse && (
-            <VerseViewer 
-              verse={currentVerse} 
-              totalVerses={currentChapter.verses}
-              onNext={handleNextVerse}
-              onPrevious={handlePreviousVerse}
-            />
-          )}
-          
-          <div className="mt-12 flex justify-between">
-            <button 
-              onClick={handlePreviousVerse}
-              disabled={currentVerseNumber === 1}
-              className={`px-4 py-2 rounded ${
-                currentVerseNumber === 1
-                  ? 'bg-earth-100 text-earth-400 cursor-not-allowed'
-                  : 'bg-earth-100 text-earth-700 hover:bg-earth-200'
-              }`}
-            >
-              Previous Verse
-            </button>
-            
-            <button 
-              onClick={handleNextVerse}
-              disabled={currentVerseNumber === currentChapter.verses}
-              className={`px-4 py-2 rounded ${
-                currentVerseNumber === currentChapter.verses
-                  ? 'bg-earth-100 text-earth-400 cursor-not-allowed'
-                  : 'bg-saffron-600 text-white hover:bg-saffron-700'
-              }`}
-            >
-              Next Verse
-            </button>
-          </div>
-        </div>
-      </section>
-      
-      {/* Footer */}
-      <footer className="py-10 bg-earth-900 text-earth-200">
-        <div className="container-custom">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h3 className="font-serif text-xl font-medium text-white">श्रीमद्‍भगवद्‍गीता</h3>
-              <p className="mt-1 text-sm text-earth-300">Ancient wisdom for the modern soul</p>
-            </div>
-            
-            <div className="text-sm text-earth-400">
-              &copy; {new Date().getFullYear()} Bhagavad Gita App. All rights reserved.
+          <div className="mt-4">
+            <div className="flex justify-between items-start">
+              <div>
+                <span className="text-xs font-medium bg-saffron-100 text-saffron-800 rounded-full px-3 py-1">
+                  Chapter {currentChapter.id}
+                </span>
+                <h1 className="mt-2 text-2xl font-serif font-medium text-earth-900">
+                  {currentChapter.name}
+                </h1>
+                <p className="mt-1 text-lg font-sanskrit text-earth-800">
+                  {currentChapter.nameSanskrit}
+                </p>
+              </div>
+              
+              <button
+                onClick={handleMarkAsRead}
+                disabled={isRead}
+                className={`p-2 rounded-full ${
+                  isRead 
+                    ? 'bg-saffron-100 text-saffron-600 cursor-not-allowed' 
+                    : 'bg-saffron-500 text-white hover:bg-saffron-600'
+                }`}
+              >
+                <Check size={18} />
+              </button>
             </div>
           </div>
         </div>
-      </footer>
-    </div>
+        
+        {currentVerse && (
+          <VerseViewer 
+            verse={currentVerse} 
+            totalVerses={currentChapter.verses}
+            onNext={handleNextVerse}
+            onPrevious={handlePreviousVerse}
+          />
+        )}
+        
+        <div className="mt-8 flex justify-between">
+          <button 
+            onClick={handlePreviousVerse}
+            disabled={currentVerseNumber === 1}
+            className={`px-4 py-2 rounded ${
+              currentVerseNumber === 1
+                ? 'bg-earth-100 text-earth-400 cursor-not-allowed'
+                : 'bg-earth-100 text-earth-700 hover:bg-earth-200'
+            }`}
+          >
+            Previous
+          </button>
+          
+          <button 
+            onClick={handleNextVerse}
+            disabled={currentVerseNumber === currentChapter.verses}
+            className={`px-4 py-2 rounded ${
+              currentVerseNumber === currentChapter.verses
+                ? 'bg-earth-100 text-earth-400 cursor-not-allowed'
+                : 'bg-saffron-600 text-white hover:bg-saffron-700'
+            }`}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </MobileLayout>
   );
 };
 

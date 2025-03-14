@@ -1,208 +1,163 @@
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Headphones, ChevronDown } from 'lucide-react';
-import Header from '../components/Header';
-import ChapterList from '../components/ChapterList';
+import { BookOpen, SunMoon, Timer, ChevronRight } from 'lucide-react';
+import MobileLayout from '../components/MobileLayout';
+import { getProgress, getCompletionPercentage } from '../services/progressService';
+import { Progress } from '@/components/ui/progress';
+import { getVerse } from '../data/verses';
+import chapters from '../data/chapters';
 
 const Index = () => {
   const navigate = useNavigate();
-  const featuresRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [completionPercentage, setCompletionPercentage] = useState(0);
+  const [readStreak, setReadStreak] = useState(0);
+  const [featuredVerse, setFeaturedVerse] = useState(null);
 
   useEffect(() => {
     setIsLoaded(true);
+    const progress = getProgress();
+    setCompletionPercentage(getCompletionPercentage());
+    setReadStreak(progress.readStreak);
+
+    // Get a featured verse
+    const randomChapter = Math.floor(Math.random() * 18) + 1;
+    const randomVerse = Math.floor(Math.random() * 10) + 1;
+    setFeaturedVerse(getVerse(randomChapter, randomVerse));
   }, []);
 
-  const scrollToFeatures = () => {
-    featuresRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const navigateToChapters = () => {
+    navigate('/chapters');
+  };
+
+  const navigateToDailyVerse = () => {
+    navigate('/daily-verse');
+  };
+
+  const navigateToMeditate = () => {
+    navigate('/meditate');
   };
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 md:px-8 container-custom">
-        <div className="max-w-4xl mx-auto text-center">
-          <span 
-            className={`inline-block px-4 py-1.5 rounded-full bg-saffron-100 text-saffron-800 font-medium text-sm mb-5 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            Ancient wisdom for modern life
-          </span>
-          
-          <h1 
-            className={`text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-earth-900 leading-tight mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
+    <MobileLayout currentRoute="/">
+      <div className="pt-8 px-4 pb-8">
+        {/* Header */}
+        <div className={`text-center mb-8 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <h1 className="text-3xl font-serif font-medium text-earth-900 leading-tight mb-2">
             श्रीमद्‍भगवद्‍गीता
           </h1>
-          
-          <p 
-            className={`text-xl md:text-2xl text-earth-700 mb-8 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            Explore the timeless wisdom of the Bhagavad Gita in Sanskrit, Hindi, and English
+          <p className="text-earth-700">
+            Divine wisdom for everyday life
           </p>
-          
-          <div 
-            className={`flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-          >
-            <button 
-              onClick={() => navigate('/chapters')}
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-saffron-600 text-white font-medium transition-colors hover:bg-saffron-700 focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:ring-offset-2"
-            >
-              <BookOpen className="mr-2 h-5 w-5" />
-              Start Reading
-            </button>
-            
-            <button 
-              onClick={scrollToFeatures}
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-white border border-earth-300 text-earth-800 font-medium transition-colors hover:bg-earth-100 focus:outline-none focus:ring-2 focus:ring-earth-500 focus:ring-offset-2"
-            >
-              Learn More
-            </button>
+        </div>
+
+        {/* Progress Card */}
+        <div className={`bg-white rounded-lg shadow-sm p-4 mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-earth-800 font-medium">Your Journey</span>
+            <span className="text-sm text-saffron-600">{completionPercentage}% Complete</span>
+          </div>
+          <Progress value={completionPercentage} className="h-2 bg-earth-100" />
+          <div className="mt-2 text-sm text-earth-700">
+            {readStreak > 0 ? (
+              <span className="font-medium">{readStreak} day streak!</span>
+            ) : (
+              <span>Start your reading journey today!</span>
+            )}
           </div>
         </div>
-        
-        <div className="flex justify-center mt-16">
-          <button 
-            onClick={scrollToFeatures}
-            className={`animate-bounce p-2 rounded-full bg-white shadow-md text-earth-700 transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+
+        {/* Quick Actions */}
+        <div className={`grid grid-cols-2 gap-4 mb-8 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <button
+            onClick={navigateToChapters}
+            className="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center h-32 transition-colors hover:bg-earth-50"
           >
-            <ChevronDown size={24} />
+            <BookOpen className="h-8 w-8 text-saffron-600 mb-2" />
+            <span className="font-medium text-earth-900">Read Chapters</span>
+            <span className="text-xs text-earth-600 mt-1">18 chapters to explore</span>
+          </button>
+          
+          <button
+            onClick={navigateToDailyVerse}
+            className="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center h-32 transition-colors hover:bg-earth-50"
+          >
+            <SunMoon className="h-8 w-8 text-saffron-600 mb-2" />
+            <span className="font-medium text-earth-900">Verse of the Day</span>
+            <span className="text-xs text-earth-600 mt-1">Daily wisdom</span>
+          </button>
+          
+          <button
+            onClick={navigateToMeditate}
+            className="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center h-32 transition-colors hover:bg-earth-50 col-span-2"
+          >
+            <Timer className="h-8 w-8 text-saffron-600 mb-2" />
+            <span className="font-medium text-earth-900">Meditate with Gita</span>
+            <span className="text-xs text-earth-600 mt-1">Find peace within</span>
           </button>
         </div>
-      </section>
-      
-      {/* Features Section */}
-      <section ref={featuresRef} className="py-20 px-4 sm:px-6 md:px-8 bg-earth-50 container-custom">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif font-medium text-earth-900 text-center mb-12">
-            Dive into Spiritual Wisdom
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <FeatureCard 
-              icon={<BookOpen className="h-8 w-8 text-saffron-600" />}
-              title="Read Original Texts"
-              description="Explore the original Sanskrit verses alongside Hindi and English translations."
-              delay={0}
-            />
-            
-            <FeatureCard 
-              icon={<Headphones className="h-8 w-8 text-saffron-600" />}
-              title="Listen to Verses"
-              description="Listen to authentic pronunciations of Sanskrit verses with our audio feature."
-              delay={1}
-            />
-            
-            <FeatureCard 
-              icon={<ChapterIcon className="h-8 w-8 text-saffron-600" />}
-              title="18 Complete Chapters"
-              description="Access all 18 chapters of the Bhagavad Gita with detailed explanations."
-              delay={2}
-            />
-          </div>
-        </div>
-      </section>
-      
-      {/* Chapters Preview Section */}
-      <section className="py-20 px-4 sm:px-6 md:px-8 container-custom">
-        <ChapterList className="max-w-6xl mx-auto" />
         
-        <div className="flex justify-center mt-12">
-          <button 
-            onClick={() => navigate('/chapters')}
-            className="inline-flex items-center px-6 py-3 rounded-lg bg-saffron-600 text-white font-medium transition-colors hover:bg-saffron-700 focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:ring-offset-2"
-          >
-            View All Chapters
-          </button>
-        </div>
-      </section>
-      
-      {/* Footer */}
-      <footer className="py-10 bg-earth-900 text-earth-200">
-        <div className="container-custom">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h3 className="font-serif text-xl font-medium text-white">श्रीमद्‍भगवद्‍गीता</h3>
-              <p className="mt-1 text-sm text-earth-300">Ancient wisdom for the modern soul</p>
+        {/* Continue Reading */}
+        {completionPercentage > 0 && (
+          <div className={`mb-8 transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-serif font-medium text-earth-900">Continue Reading</h2>
+              <button 
+                onClick={navigateToChapters}
+                className="text-saffron-600 text-sm flex items-center"
+              >
+                View All <ChevronRight size={16} />
+              </button>
             </div>
             
-            <div className="text-sm text-earth-400">
-              &copy; {new Date().getFullYear()} Bhagavad Gita App. All rights reserved.
+            <div className="grid grid-cols-1 gap-4">
+              {chapters.slice(0, 2).map(chapter => (
+                <button
+                  key={chapter.id}
+                  onClick={() => navigate(`/chapters/${chapter.id}/1`)}
+                  className="bg-white rounded-lg shadow-sm p-4 text-left transition-colors hover:bg-earth-50"
+                >
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <span className="text-xs font-medium bg-saffron-100 text-saffron-800 rounded-full px-2 py-1">
+                        Chapter {chapter.id}
+                      </span>
+                      <h3 className="mt-2 font-serif text-lg font-medium text-earth-900">
+                        {chapter.name}
+                      </h3>
+                      <p className="text-xs text-earth-600 mt-1">
+                        {chapter.verses} verses
+                      </p>
+                    </div>
+                    <ChevronRight size={20} className="text-earth-400" />
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-// Custom ChapterIcon component
-const ChapterIcon = ({ className = '' }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-    <path d="M8 7h6" />
-    <path d="M8 11h8" />
-  </svg>
-);
-
-// Feature Card Component
-const FeatureCard = ({ icon, title, description, delay = 0 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(card);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  return (
-    <div 
-      ref={cardRef}
-      className={`p-6 bg-white rounded-xl shadow-sm transition-all duration-700 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-      style={{ 
-        transitionDelay: `${delay * 0.1}s`,
-        boxShadow: '0 4px 20px rgba(201, 176, 131, 0.1)',
-        border: '1px solid rgba(232, 218, 187, 0.3)'
-      }}
-    >
-      <div className="mb-4">
-        {icon}
+        )}
+        
+        {/* Featured Verse */}
+        {featuredVerse && (
+          <div className={`transition-all duration-700 delay-400 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <h2 className="text-lg font-serif font-medium text-earth-900 mb-4">Featured Verse</h2>
+            <div className="bg-white rounded-lg shadow-sm p-5">
+              <p className="font-sanskrit text-earth-900 mb-3">{featuredVerse.sanskrit}</p>
+              <p className="text-earth-700 text-sm">{featuredVerse.english}</p>
+              <div className="mt-4 text-right">
+                <button 
+                  onClick={() => navigate(`/chapters/${featuredVerse.chapter}/${featuredVerse.verse}`)}
+                  className="text-saffron-600 text-sm inline-flex items-center"
+                >
+                  Read more <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-      <h3 className="text-xl font-serif font-medium text-earth-900 mb-2">
-        {title}
-      </h3>
-      <p className="text-earth-700">
-        {description}
-      </p>
-    </div>
+    </MobileLayout>
   );
 };
 
