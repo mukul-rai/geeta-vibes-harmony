@@ -26,7 +26,7 @@ const DailyVerse = () => {
     
     // Use the day of the year to select a verse (cycling through verses)
     const start = new Date(today.getFullYear(), 0, 0);
-    const diff = today - start.getTime();
+    const diff = today.getTime() - start.getTime(); // Get timestamp from today
     const oneDay = 1000 * 60 * 60 * 24;
     const dayOfYear = Math.floor(diff / oneDay);
     
