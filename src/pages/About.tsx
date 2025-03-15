@@ -1,16 +1,23 @@
 
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { BookOpen, Heart, MessageSquare } from 'lucide-react';
 
 const About = () => {
+  const navigate = useNavigate();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header showBackButton onBack={handleBack} />
       
       <section className="pt-32 pb-20 px-4 sm:px-6 md:px-8 container-custom">
         <div className="max-w-4xl mx-auto">

@@ -3,7 +3,13 @@ import { useState, useEffect } from 'react';
 import { Menu, X, BookOpen, ArrowLeft } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
-const Header = ({ showBackButton = false, onBack }) => {
+// Update the type definition to make onBack only required when showBackButton is true
+type HeaderProps = {
+  showBackButton?: boolean;
+  onBack?: () => void;
+};
+
+const Header = ({ showBackButton = false, onBack }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
