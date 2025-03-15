@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -49,7 +50,7 @@
   --secondary: 12 10% 18%;
   --secondary-foreground: 45 10% 95%;
   --muted: 12 10% 18%;
-  --muted-foreground: 24 5% 65%;
+  --muted-foreground: 24 5% 75%;
   --accent: 110 10% 20%;
   --accent-foreground: 45 10% 95%;
   --destructive: 0 62% 30%;
@@ -152,35 +153,6 @@ body {
   to { 
     transform: rotate(360deg); 
   }
-}
-
-.om-symbol {
-  position: relative;
-  font-family: 'Noto Serif Devanagari', serif;
-  font-size: 2rem;
-  display: inline-block;
-  color: theme('colors.saffron.500');
-}
-
-.om-symbol::before {
-  content: 'ॐ';
-}
-
-.om-symbol-bg {
-  position: relative;
-}
-
-.om-symbol-bg::after {
-  content: '';
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle, rgba(249,148,23,0.15) 0%, rgba(249,148,23,0) 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  z-index: -1;
 }
 
 .decorative-line {

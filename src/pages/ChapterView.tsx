@@ -1,12 +1,13 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, BookOpen, Check } from 'lucide-react';
+import { BookOpen, Check } from 'lucide-react';
 import VerseViewer from '../components/VerseViewer';
 import chapters from '../data/chapters';
 import { getVersesByChapter, getVerse } from '../data/verses';
 import MobileLayout from '../components/MobileLayout';
 import { markVerseAsRead, isVerseRead } from '../services/progressService';
+import Header from '../components/Header';
 
 const ChapterView = () => {
   const { chapterId, verseId } = useParams();
@@ -75,6 +76,10 @@ const ChapterView = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate('/chapters');
+  };
+
   if (!currentVerse || !currentChapter) {
     return (
       <MobileLayout currentRoute="/chapters">
@@ -83,8 +88,8 @@ const ChapterView = () => {
             <div className="mb-4 text-saffron-500">
               <BookOpen size={48} className="mx-auto" />
             </div>
-            <h2 className="text-2xl font-serif font-medium text-earth-900 mb-2">Loading verse...</h2>
-            <p className="text-earth-700">Please wait while we retrieve the wisdom.</p>
+            <h2 className="text-2xl font-serif font-medium text-earth-900 dark:text-earth-100 mb-2">Loading verse...</h2>
+            <p className="text-earth-700 dark:text-earth-300">Please wait while we retrieve the wisdom.</p>
           </div>
         </div>
       </MobileLayout>
@@ -93,26 +98,20 @@ const ChapterView = () => {
 
   return (
     <MobileLayout currentRoute="/chapters">
-      <div className="pt-8 px-4 pb-8">
+      <Header showBackButton={true} onBack={handleBack} />
+      
+      <div className="pt-20 px-4 pb-8">
         <div className="mb-6">
-          <button 
-            onClick={() => navigate('/chapters')}
-            className="inline-flex items-center text-earth-700 hover:text-saffron-700 transition-colors"
-          >
-            <ArrowLeft size={18} className="mr-1" />
-            Back to Chapters
-          </button>
-          
           <div className="mt-4">
             <div className="flex justify-between items-start">
               <div>
-                <span className="text-xs font-medium bg-saffron-100 text-saffron-800 rounded-full px-3 py-1">
+                <span className="text-xs font-medium bg-saffron-100 dark:bg-saffron-900/50 text-saffron-800 dark:text-saffron-300 rounded-full px-3 py-1">
                   Chapter {currentChapter.id}
                 </span>
-                <h1 className="mt-2 text-2xl font-serif font-medium text-earth-900">
+                <h1 className="mt-2 text-2xl font-serif font-medium text-earth-900 dark:text-earth-100">
                   {currentChapter.name}
                 </h1>
-                <p className="mt-1 text-lg font-sanskrit text-earth-800">
+                <p className="mt-1 text-lg font-sanskrit text-earth-800 dark:text-earth-200">
                   {currentChapter.nameSanskrit}
                 </p>
               </div>
@@ -122,7 +121,7 @@ const ChapterView = () => {
                 disabled={isRead}
                 className={`p-2 rounded-full ${
                   isRead 
-                    ? 'bg-saffron-100 text-saffron-600 cursor-not-allowed' 
+                    ? 'bg-saffron-100 dark:bg-saffron-900/50 text-saffron-600 dark:text-saffron-400 cursor-not-allowed' 
                     : 'bg-saffron-500 text-white hover:bg-saffron-600'
                 }`}
               >
@@ -147,8 +146,8 @@ const ChapterView = () => {
             disabled={currentVerseNumber === 1}
             className={`px-4 py-2 rounded ${
               currentVerseNumber === 1
-                ? 'bg-earth-100 text-earth-400 cursor-not-allowed'
-                : 'bg-earth-100 text-earth-700 hover:bg-earth-200'
+                ? 'bg-earth-100 dark:bg-earth-800 text-earth-400 dark:text-earth-600 cursor-not-allowed'
+                : 'bg-earth-100 dark:bg-earth-800 text-earth-700 dark:text-earth-300 hover:bg-earth-200 dark:hover:bg-earth-700'
             }`}
           >
             Previous
@@ -159,7 +158,7 @@ const ChapterView = () => {
             disabled={currentVerseNumber === currentChapter.verses}
             className={`px-4 py-2 rounded ${
               currentVerseNumber === currentChapter.verses
-                ? 'bg-earth-100 text-earth-400 cursor-not-allowed'
+                ? 'bg-earth-100 dark:bg-earth-800 text-earth-400 dark:text-earth-600 cursor-not-allowed'
                 : 'bg-saffron-600 text-white hover:bg-saffron-700'
             }`}
           >
