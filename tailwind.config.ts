@@ -76,6 +76,30 @@ export default {
 					800: '#4d3800',
 					900: '#1a1300',
 				},
+				maroon: {
+					50: '#fdf2f2',
+					100: '#fde8e8',
+					200: '#fbd5d5',
+					300: '#f8b4b4',
+					400: '#f98080',
+					500: '#f05252',
+					600: '#e02424',
+					700: '#c81e1e',
+					800: '#9b1c1c',
+					900: '#771d1d',
+				},
+				kumkum: {
+					50: '#fff5f5',
+					100: '#ffe0e0',
+					200: '#ffb8b8',
+					300: '#ff8080',
+					400: '#ff4d4d',
+					500: '#ff1a1a',
+					600: '#e60000',
+					700: '#b30000',
+					800: '#800000',
+					900: '#4d0000',
+				},
 				gold: {
 					50: '#fbf8e6',
 					100: '#f7f1cc',
@@ -103,8 +127,13 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				serif: ['Playfair Display', 'serif'],
-				sanskrit: ['Poppins', 'sans-serif']
+				serif: ['Rozha One', 'serif'],
+				sanskrit: ['Tiro Devanagari Sanskrit', 'serif'],
+				devanagari: ['Tiro Devanagari Sanskrit', 'serif'],
+				hindi: ['Yatra One', 'cursive'],
+				heading: ['Rozha One', 'serif'],
+				display: ['Playfair Display', 'serif'],
+				body: ['Poppins', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

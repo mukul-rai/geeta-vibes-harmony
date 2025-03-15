@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rozha+One&family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Yatra+One&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,7 +11,7 @@
   --card-foreground: 20 14.3% 4.1%;
   --popover: 0 0% 100%;
   --popover-foreground: 20 14.3% 4.1%;
-  --primary: 36 92% 45%;
+  --primary: 27 96% 48%;
   --primary-foreground: 60 9.1% 97.8%;
   --secondary: 60 4.8% 95.9%;
   --secondary-foreground: 24 9.8% 10%;
@@ -24,18 +23,18 @@
   --destructive-foreground: 60 9.1% 97.8%;
   --border: 20 5.9% 90%;
   --input: 20 5.9% 90%;
-  --ring: 36 92% 45%;
+  --ring: 27 96% 48%;
   --radius: 0.5rem;
   
   /* Sidebar colors for dark theme */
   --sidebar-background: 20 14.3% 4.1%;
   --sidebar-foreground: 60 9.1% 97.8%;
-  --sidebar-primary: 36 92% 45%;
+  --sidebar-primary: 27 96% 48%;
   --sidebar-primary-foreground: 60 9.1% 97.8%;
   --sidebar-accent: 12 6.5% 15.1%;
   --sidebar-accent-foreground: 60 9.1% 97.8%;
   --sidebar-border: 12 6.5% 15.1%;
-  --sidebar-ring: 36 92% 45%;
+  --sidebar-ring: 27 96% 48%;
 }
 
 .dark {
@@ -45,7 +44,7 @@
   --card-foreground: 60 9.1% 97.8%;
   --popover: 20 14.3% 4.1%;
   --popover-foreground: 60 9.1% 97.8%;
-  --primary: 36 92% 45%;
+  --primary: 27 96% 48%;
   --primary-foreground: 60 9.1% 97.8%;
   --secondary: 12 6.5% 15.1%;
   --secondary-foreground: 60 9.1% 97.8%;
@@ -57,7 +56,7 @@
   --destructive-foreground: 60 9.1% 97.8%;
   --border: 12 6.5% 15.1%;
   --input: 12 6.5% 15.1%;
-  --ring: 36 92% 45%;
+  --ring: 27 96% 48%;
 }
 
 .container-custom {
@@ -92,7 +91,7 @@
 }
 
 .hindi-text {
-  @apply text-earth-800 dark:text-earth-200 leading-relaxed;
+  @apply text-earth-800 dark:text-earth-200 leading-relaxed font-devanagari;
 }
 
 .english-text {
@@ -160,5 +159,73 @@ body {
 }
 
 .font-sanskrit {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+
+.font-devanagari {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+
+.font-hindi-title {
+  font-family: 'Yatra One', cursive;
+}
+
+.font-heading {
+  font-family: 'Rozha One', serif;
+}
+
+/* Om symbol styling */
+.om-symbol {
+  position: relative;
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-size: 2rem;
+  display: inline-block;
+  color: theme('colors.saffron.600');
+}
+
+.om-symbol::before {
+  content: 'ॐ';
+}
+
+.om-symbol-bg {
+  position: relative;
+}
+
+.om-symbol-bg::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(255,171,64,0.2) 0%, rgba(255,171,64,0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Decorative elements */
+.decorative-line {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, theme('colors.saffron.500') 50%, transparent 100%);
+  margin: 2rem auto;
+  width: 60%;
+}
+
+/* Mandala background */
+.mandala-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.mandala-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23e5972f' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
 }
