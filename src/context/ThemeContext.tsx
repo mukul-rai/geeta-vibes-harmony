@@ -37,7 +37,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const ThemeIcon = () => {
     return theme === 'dark' ? 
       <Sun className="h-5 w-5 text-saffron-400" /> : 
-      <Moon className="h-5 w-5 text-earth-600" />;
+      <Moon className="h-5 w-5 text-earth-700" />;
   };
 
   return (
