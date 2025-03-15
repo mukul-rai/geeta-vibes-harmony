@@ -126,14 +126,14 @@ export default {
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				serif: ['Rozha One', 'serif'],
-				sanskrit: ['Tiro Devanagari Sanskrit', 'serif'],
-				devanagari: ['Tiro Devanagari Sanskrit', 'serif'],
-				hindi: ['Yatra One', 'cursive'],
-				heading: ['Rozha One', 'serif'],
-				display: ['Playfair Display', 'serif'],
-				body: ['Poppins', 'sans-serif']
+				sans: ['Noto Serif Devanagari', 'serif'],
+				serif: ['Noto Serif Devanagari', 'serif'],
+				sanskrit: ['Noto Serif Devanagari', 'serif'],
+				devanagari: ['Noto Serif Devanagari', 'serif'],
+				hindi: ['Noto Serif Devanagari', 'serif'],
+				heading: ['Noto Serif Devanagari', 'serif'],
+				display: ['Noto Serif Devanagari', 'serif'],
+				body: ['Noto Serif Devanagari', 'serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
