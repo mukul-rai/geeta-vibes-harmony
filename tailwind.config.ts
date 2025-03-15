@@ -27,7 +27,17 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					50: '#FEF3EF',
+					100: '#FDE6DE',
+					200: '#FBCBBA',
+					300: '#F9AF96',
+					400: '#F68D65',
+					500: '#F26B34',
+					600: '#E0502A',
+					700: '#B93D1E',
+					800: '#932F18',
+					900: '#6D2312',
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -43,7 +53,11 @@ export default {
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					foreground: 'hsl(var(--accent-foreground))',
+					success: '#4CAF50',
+					info: '#2196F3',
+					warning: '#FF9800',
+					error: '#F44336',
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -63,104 +77,43 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Sanatan Dharma inspired colors - updated with more serene tones
-				saffron: {
-					50: '#fff8eb',
-					100: '#ffefd0',
-					200: '#ffdda1',
-					300: '#ffc666',
-					400: '#ffb033',
-					500: '#f99417',
-					600: '#e6790d',
-					700: '#bf5c0c',
-					800: '#9a4912',
-					900: '#7d3d14',
+				// Background Colors
+				backgroundCustom: {
+					DEFAULT: '#FCFAF7',
+					card: '#FFFFFF',
 				},
-				maroon: {
-					50: '#fdf2f7',
-					100: '#fce7f1',
-					200: '#fad0e3',
-					300: '#f7aac9',
-					400: '#f074a6',
-					500: '#e74a81',
-					600: '#d22a60',
-					700: '#b01f4b',
-					800: '#931d41',
-					900: '#7d1c3b',
+				// Text Colors
+				text: {
+					primary: '#333333',
+					secondary: '#777777',
+					muted: '#999999',
 				},
-				kumkum: {
-					50: '#fff1f1',
-					100: '#ffe1e1',
-					200: '#ffc7c7',
-					300: '#ffa0a0',
-					400: '#ff7070',
-					500: '#ff4d4d',
-					600: '#e12c2c',
-					700: '#bd2020',
-					800: '#9c1e1e',
-					900: '#821f1f',
+				// Border and Divider Colors
+				borderCustom: {
+					DEFAULT: '#E0E0E0',
+					light: '#F0F0F0',
 				},
-				gold: {
-					50: '#fdfaeb',
-					100: '#fbf5d5',
-					200: '#f7ecaa',
-					300: '#f2dc74',
-					400: '#ecc946',
-					500: '#e2b52a',
-					600: '#c99120',
-					700: '#a6701e',
-					800: '#885920',
-					900: '#724a1f',
+				// Dark theme backgrounds
+				dark: {
+					DEFAULT: '#2B2226',
+					card: '#3D3235',
+					hover: '#4A3E42',
+					active: '#574951',
+					border: '#413842',
+					muted: '#2F262A',
+					elevation: {
+						1: 'rgba(0, 0, 0, 0.05)',
+						2: 'rgba(0, 0, 0, 0.07)',
+						3: 'rgba(0, 0, 0, 0.09)',
+					},
 				},
-				earth: {
-					50: '#f9f6f3',
-					100: '#f3ede7',
-					200: '#e8ddcc',
-					300: '#d8c9ae',
-					400: '#c2ac88',
-					500: '#ab916c',
-					600: '#9c7d59',
-					700: '#81654a',
-					800: '#6a533f',
-					900: '#594736',
+				// Dark theme text colors
+				darkText: {
+					primary: '#FFFFFF',
+					secondary: 'rgba(255, 255, 255, 0.7)',
+					muted: 'rgba(255, 255, 255, 0.5)',
+					disabled: 'rgba(255, 255, 255, 0.38)',
 				},
-				// New calming colors
-				sage: {
-					50: '#f1f4f0',
-					100: '#e2e9df',
-					200: '#c5d4c0',
-					300: '#a3b99c',
-					400: '#829c79',
-					500: '#69815f',
-					600: '#54674c',
-					700: '#445040',
-					800: '#394237',
-					900: '#2f372e',
-				},
-				sky: {
-					50: '#f0f7fc',
-					100: '#ddecf8',
-					200: '#c0ddf3',
-					300: '#92c5ea',
-					400: '#62a8dd',
-					500: '#4188c7',
-					600: '#366daa',
-					700: '#2e5989',
-					800: '#2b4b70',
-					900: '#28405d',
-				},
-				lavender: {
-					50: '#f4f1fa',
-					100: '#ebe5f5',
-					200: '#d8ccea',
-					300: '#beacdc',
-					400: '#a285ca',
-					500: '#8c68b8',
-					600: '#7852a3',
-					700: '#644386',
-					800: '#53396e',
-					900: '#47325a',
-				}
 			},
 			fontFamily: {
 				sans: ['Noto Serif Devanagari', 'serif'],

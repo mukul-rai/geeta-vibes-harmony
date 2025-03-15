@@ -34,7 +34,7 @@ const Header = ({ showBackButton = false, onBack }: HeaderProps) => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white dark:bg-earth-900 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+        isScrolled ? 'bg-white dark:bg-dark-card bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm shadow-sm' : 'bg-transparent'
       }`}
     >
       <div className="container-custom py-4 flex justify-between items-center">
@@ -42,14 +42,14 @@ const Header = ({ showBackButton = false, onBack }: HeaderProps) => {
           {showBackButton ? (
             <button 
               onClick={onBack}
-              className="mr-2 p-1 text-earth-700 dark:text-earth-300 hover:text-saffron-600 dark:hover:text-saffron-400"
+              className="mr-2 p-1 text-text-primary dark:text-darkText-primary hover:text-primary-600 dark:hover:text-primary-500"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
           ) : null}
           <Link to="/" className="flex items-center space-x-2">
-            <BookOpen className="w-6 h-6 text-saffron-700 dark:text-saffron-500" />
-            <span className="font-serif text-xl font-medium text-earth-900 dark:text-earth-100">श्रीमद्‍भगवद्‍गीता</span>
+            <BookOpen className="w-6 h-6 text-primary-600 dark:text-primary-500" />
+            <span className="font-serif text-xl font-medium text-text-primary dark:text-darkText-primary">श्रीमद्‍भगवद्‍गीता</span>
           </Link>
         </div>
         
@@ -68,7 +68,7 @@ const Header = ({ showBackButton = false, onBack }: HeaderProps) => {
         
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-earth-800 dark:text-earth-200 focus:outline-none"
+          className="md:hidden text-text-primary dark:text-darkText-primary focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -77,7 +77,7 @@ const Header = ({ showBackButton = false, onBack }: HeaderProps) => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-earth-800 bg-opacity-95 dark:bg-opacity-95 backdrop-blur-md">
+        <div className="md:hidden bg-white dark:bg-dark-DEFAULT bg-opacity-95 dark:bg-opacity-95 backdrop-blur-md">
           <div className="container-custom py-4 flex flex-col space-y-4">
             <NavLink to="/" active={location.pathname === '/'}>
               Home
@@ -102,8 +102,8 @@ const NavLink = ({ children, to, active = false }) => {
       to={to}
       className={`transition-colors duration-300 font-medium ${
         active 
-          ? 'text-saffron-700 dark:text-saffron-400 border-b-2 border-saffron-500' 
-          : 'text-earth-700 dark:text-earth-300 hover:text-saffron-600 dark:hover:text-saffron-400'
+          ? 'text-primary-600 dark:text-primary-400 border-b-2 border-primary-500' 
+          : 'text-text-secondary dark:text-darkText-secondary hover:text-primary-600 dark:hover:text-primary-400'
       }`}
     >
       {children}
