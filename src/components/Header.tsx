@@ -42,13 +42,13 @@ const Header = ({ showBackButton = false, onBack }: HeaderProps) => {
           {showBackButton ? (
             <button 
               onClick={onBack}
-              className="mr-2 p-1 text-text-primary dark:text-darkText-primary hover:text-primary-600 dark:hover:text-primary-500"
+              className="mr-2 p-1 text-text-primary dark:text-darkText-primary hover:text-saffron-600 dark:hover:text-saffron-500"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
           ) : null}
           <Link to="/" className="flex items-center space-x-2">
-            <BookOpen className="w-6 h-6 text-primary-600 dark:text-primary-500" />
+            <BookOpen className="w-6 h-6 text-saffron-600 dark:text-saffron-500" />
             <span className="font-serif text-xl font-medium text-text-primary dark:text-darkText-primary">श्रीमद्‍भगवद्‍गीता</span>
           </Link>
         </div>
@@ -102,8 +102,8 @@ const NavLink = ({ children, to, active = false }) => {
       to={to}
       className={`transition-colors duration-300 font-medium ${
         active 
-          ? 'text-primary-600 dark:text-primary-400 border-b-2 border-primary-500' 
-          : 'text-text-secondary dark:text-darkText-secondary hover:text-primary-600 dark:hover:text-primary-400'
+          ? 'text-saffron-600 dark:text-saffron-400 border-b-2 border-saffron-500' 
+          : 'text-text-secondary dark:text-darkText-secondary hover:text-saffron-600 dark:hover:text-saffron-400'
       }`}
     >
       {children}

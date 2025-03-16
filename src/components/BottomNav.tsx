@@ -19,7 +19,7 @@ const BottomNav = ({ currentRoute }: BottomNavProps) => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white dark:bg-earth-800 border-t border-earth-200 dark:border-earth-700 shadow-lg">
+    <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white dark:bg-dark-card border-t border-borderCustom-light dark:border-dark-border shadow-lg">
       <div className="flex justify-around items-center h-16">
         {navItems.map((item) => {
           const isActive = currentRoute === item.path || 
@@ -32,8 +32,8 @@ const BottomNav = ({ currentRoute }: BottomNavProps) => {
               to={item.path}
               className={`flex flex-col items-center justify-center w-full h-full ${
                 isActive 
-                  ? 'text-saffron-600 dark:text-saffron-500' 
-                  : 'text-earth-600 dark:text-earth-400'
+                  ? 'text-saffron-600 dark:text-saffron-400' 
+                  : 'text-text-secondary dark:text-darkText-secondary'
               }`}
             >
               <item.icon size={20} />
