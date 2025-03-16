@@ -19,7 +19,7 @@ const BottomNav = ({ currentRoute }: BottomNavProps) => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white dark:bg-dark-card border-t border-borderCustom-light dark:border-dark-border shadow-lg">
+    <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/90 dark:bg-earth-800/90 backdrop-blur-md border-t border-earth-100 dark:border-earth-700 shadow-lg">
       <div className="flex justify-around items-center h-16">
         {navItems.map((item) => {
           const isActive = currentRoute === item.path || 
@@ -30,14 +30,34 @@ const BottomNav = ({ currentRoute }: BottomNavProps) => {
             <Link 
               key={item.path} 
               to={item.path}
-              className={`flex flex-col items-center justify-center w-full h-full ${
-                isActive 
-                  ? 'text-primary-500 dark:text-primary-400' 
-                  : 'text-text-secondary dark:text-darkText-secondary'
-              }`}
+              className={`relative flex flex-col items-center justify-center w-full h-full group`}
             >
-              <item.icon size={20} />
-              <span className="text-xs mt-1">{item.label}</span>
+              {isActive && (
+                <span className="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-saffron-400 dark:bg-saffron-500 rounded-b-full" />
+              )}
+              
+              <div className={`flex items-center justify-center w-8 h-8 mb-1 ${
+                isActive 
+                  ? 'bg-saffron-100 dark:bg-saffron-900/40 rounded-full'
+                  : 'group-hover:bg-earth-100 dark:group-hover:bg-earth-800 rounded-full transition-colors'
+              }`}>
+                <item.icon 
+                  size={18} 
+                  className={`${
+                    isActive 
+                      ? 'text-saffron-600 dark:text-saffron-400' 
+                      : 'text-earth-500 dark:text-earth-400 group-hover:text-earth-700 dark:group-hover:text-earth-200'
+                  } transition-colors`}
+                />
+              </div>
+              
+              <span className={`text-xs ${
+                isActive 
+                  ? 'font-medium text-saffron-600 dark:text-saffron-400' 
+                  : 'text-earth-500 dark:text-earth-400 group-hover:text-earth-700 dark:group-hover:text-earth-200'
+              } transition-colors`}>
+                {item.label}
+              </span>
             </Link>
           );
         })}
