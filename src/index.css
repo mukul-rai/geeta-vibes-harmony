@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -6,75 +5,74 @@
 @tailwind utilities;
 
 :root {
-  --background: 36 40% 98%;
-  --foreground: 30 20% 16%;
+  --background: 40 55% 98%;
+  --foreground: 24 25% 16%;
   
   --card: 0 0% 100%;
-  --card-foreground: 30 20% 16%;
+  --card-foreground: 24 25% 16%;
   
   --popover: 0 0% 100%;
-  --popover-foreground: 30 20% 16%;
+  --popover-foreground: 24 25% 16%;
   
-  --primary: 32 100% 61%;
-  --primary-foreground: 30 25% 98%;
+  --primary: 21 100% 55%;
+  --primary-foreground: 0 0% 100%;
   
-  --secondary: 32 60% 96%;
-  --secondary-foreground: 32 100% 61%;
+  --secondary: 30 30% 96%;
+  --secondary-foreground: 21 100% 55%;
   
-  --muted: 36 40% 96%;
-  --muted-foreground: 30 12% 40%;
+  --muted: 30 40% 96%;
+  --muted-foreground: 24 15% 48%;
   
-  --accent: 32 60% 96%;
-  --accent-foreground: 32 100% 61%;
+  --accent: 30 30% 96%;
+  --accent-foreground: 21 100% 55%;
   
-  --destructive: 0 85% 60%;
-  --destructive-foreground: 30 25% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
   
-  --border: 30 15% 90%;
-  --input: 30 15% 90%;
-  --ring: 32 100% 61%;
+  --border: 30 20% 87%;
+  --input: 30 20% 87%;
+  --ring: 21 100% 55%;
   
   --radius: 0.5rem;
   
-  /* Sidebar colors for dark theme */
-  --sidebar-background: 24 15% 12%;
-  --sidebar-foreground: 30 25% 98%;
-  --sidebar-primary: 32 100% 61%;
-  --sidebar-primary-foreground: 30 25% 98%;
-  --sidebar-accent: 24 15% 16%;
-  --sidebar-accent-foreground: 30 25% 98%;
-  --sidebar-border: 24 15% 20%;
-  --sidebar-ring: 32 100% 61%;
+  --sidebar-background: 27 18% 9%;
+  --sidebar-foreground: 30 30% 96%;
+  --sidebar-primary: 21 100% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 27 15% 15%;
+  --sidebar-accent-foreground: 30 30% 96%;
+  --sidebar-border: 27 8% 18%;
+  --sidebar-ring: 21 100% 55%;
 }
 
 .dark {
-  --background: 24 15% 12%;
-  --foreground: 30 25% 98%;
+  --background: 27 18% 9%;
+  --foreground: 30 30% 96%;
   
-  --card: 24 15% 16%;
-  --card-foreground: 30 25% 98%;
+  --card: 27 15% 15%;
+  --card-foreground: 30 30% 96%;
   
-  --popover: 24 15% 12%;
-  --popover-foreground: 30 25% 98%;
+  --popover: 27 18% 9%;
+  --popover-foreground: 30 30% 96%;
   
-  --primary: 32 100% 61%;
-  --primary-foreground: 30 25% 98%;
+  --primary: 21 100% 55%;
+  --primary-foreground: 0 0% 100%;
   
-  --secondary: 24 15% 20%;
-  --secondary-foreground: 30 25% 98%;
+  --secondary: 27 12% 20%;
+  --secondary-foreground: 30 30% 96%;
   
-  --muted: 24 10% 18%;
-  --muted-foreground: 30 15% 70%;
+  --muted: 27 10% 18%;
+  --muted-foreground: 30 25% 85%;
   
-  --accent: 24 15% 20%;
-  --accent-foreground: 30 25% 98%;
+  --accent: 27 12% 20%;
+  --accent-foreground: 30 30% 96%;
   
-  --destructive: 0 70% 40%;
-  --destructive-foreground: 30 25% 98%;
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 100%;
   
-  --border: 24 15% 20%;
-  --input: 24 15% 20%;
-  --ring: 32 100% 61%;
+  --border: 27 8% 18%;
+  --input: 27 8% 18%;
+  --ring: 21 100% 55%;
 }
 
 .container-custom {
@@ -126,7 +124,6 @@
   @apply text-text-secondary dark:text-darkText-secondary hover:text-saffron-500 dark:hover:text-saffron-400;
 }
 
-/* Fix for the error - using the correct class syntax for dark mode background */
 body {
   @apply bg-backgroundCustom dark:bg-dark;
 }
@@ -193,7 +190,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ff963a' fill-opacity='0.04'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ff963a' fill-opacity='0.04'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   z-index: -1;
 }
 
