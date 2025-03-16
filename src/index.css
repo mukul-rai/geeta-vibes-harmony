@@ -126,8 +126,9 @@
   @apply text-text-secondary dark:text-darkText-secondary hover:text-saffron-500 dark:hover:text-saffron-400;
 }
 
+/* Fix for the error - using the correct class syntax for dark mode background */
 body {
-  @apply bg-backgroundCustom dark:bg-dark-DEFAULT;
+  @apply bg-backgroundCustom dark:bg-dark;
 }
 
 @keyframes fade-in {

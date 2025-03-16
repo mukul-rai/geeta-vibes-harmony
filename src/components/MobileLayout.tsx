@@ -23,7 +23,7 @@ const MobileLayout = ({ children, currentRoute }: MobileLayoutProps) => {
   }, [currentRoute]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-backgroundCustom dark:bg-dark-DEFAULT dark:text-darkText-primary max-w-md mx-auto relative overflow-hidden mandala-bg">
+    <div className="flex flex-col min-h-screen bg-backgroundCustom dark:bg-dark max-w-md mx-auto relative overflow-hidden mandala-bg">
       <main className={`flex-1 pb-20 transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         {children}
       </main>
