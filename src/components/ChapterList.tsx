@@ -41,7 +41,7 @@ const ChapterList = ({ className = '' }: ChapterListProps) => {
 
   return (
     <div ref={containerRef} className={`mt-8 ${className}`}>
-      <h2 className="text-2xl md:text-3xl font-serif font-medium text-earth-900 mb-6 text-center">
+      <h2 className="text-2xl md:text-3xl font-serif font-medium text-earth-900 dark:text-earth-50 mb-6 text-center">
         Explore Chapters
       </h2>
       
@@ -58,28 +58,28 @@ const ChapterList = ({ className = '' }: ChapterListProps) => {
             onClick={() => handleChapterClick(chapter.id)}
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium bg-saffron-100 text-saffron-800 rounded-full px-2 py-1">
+              <span className="text-xs font-medium bg-primary-100 text-primary-800 rounded-full px-2 py-1">
                 Chapter {chapter.id}
               </span>
-              <span className="text-xs text-earth-600">
+              <span className="text-xs text-earth-600 dark:text-earth-300">
                 {chapter.verses} verses
               </span>
             </div>
             
-            <h3 className="font-serif text-lg font-medium text-earth-900 mb-1">
+            <h3 className="font-serif text-lg font-medium text-earth-900 dark:text-earth-50 mb-1">
               {chapter.name}
             </h3>
             
-            <p className="text-sm text-earth-700 mb-3 font-sanskrit">
+            <p className="text-sm text-earth-700 dark:text-earth-200 mb-3 font-sanskrit">
               {chapter.nameSanskrit}
             </p>
             
-            <p className="text-sm text-earth-600 mb-3 line-clamp-2">
+            <p className="text-sm text-earth-600 dark:text-earth-300 mb-3 line-clamp-2">
               {chapter.description}
             </p>
             
             <div className="flex justify-end">
-              <span className="text-saffron-700 text-sm inline-flex items-center font-medium">
+              <span className="text-primary-600 dark:text-primary-400 text-sm inline-flex items-center font-medium">
                 Read Chapter <ChevronRight size={16} className="ml-1" />
               </span>
             </div>

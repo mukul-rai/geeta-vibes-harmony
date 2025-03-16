@@ -32,7 +32,7 @@ const BottomNav = ({ currentRoute }: BottomNavProps) => {
               to={item.path}
               className={`flex flex-col items-center justify-center w-full h-full ${
                 isActive 
-                  ? 'text-saffron-600 dark:text-saffron-400' 
+                  ? 'text-primary-500 dark:text-primary-400' 
                   : 'text-text-secondary dark:text-darkText-secondary'
               }`}
             >

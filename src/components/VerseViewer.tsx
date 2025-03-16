@@ -35,10 +35,10 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
     <div className={`verse-card transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <span className="text-xs font-medium bg-saffron-100 text-saffron-800 rounded-full px-3 py-1">
+          <span className="text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-100 rounded-full px-3 py-1">
             Chapter {verse.chapter}
           </span>
-          <h2 className="mt-2 text-xl md:text-2xl font-serif font-medium text-earth-900">
+          <h2 className="mt-2 text-xl md:text-2xl font-serif font-medium text-earth-900 dark:text-earth-50">
             Verse {verse.verse} of {totalVerses}
           </h2>
         </div>
@@ -49,8 +49,8 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
             disabled={verse.verse === 1}
             className={`p-2 rounded-full transition-transform duration-200 ${
               verse.verse === 1 
-                ? 'text-earth-400 bg-earth-100 cursor-not-allowed' 
-                : 'text-earth-700 bg-earth-100 hover:bg-earth-200 hover:scale-105'
+                ? 'text-earth-400 bg-earth-100 dark:text-earth-500 dark:bg-earth-900 cursor-not-allowed' 
+                : 'text-earth-700 bg-earth-100 hover:bg-earth-200 dark:text-earth-200 dark:bg-earth-800 dark:hover:bg-earth-700 hover:scale-105'
             }`}
           >
             <ChevronLeft size={20} />
@@ -60,8 +60,8 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
             disabled={verse.verse === totalVerses}
             className={`p-2 rounded-full transition-transform duration-200 ${
               verse.verse === totalVerses 
-                ? 'text-earth-400 bg-earth-100 cursor-not-allowed' 
-                : 'text-earth-700 bg-earth-100 hover:bg-earth-200 hover:scale-105'
+                ? 'text-earth-400 bg-earth-100 dark:text-earth-500 dark:bg-earth-900 cursor-not-allowed' 
+                : 'text-earth-700 bg-earth-100 hover:bg-earth-200 dark:text-earth-200 dark:bg-earth-800 dark:hover:bg-earth-700 hover:scale-105'
             }`}
           >
             <ChevronRight size={20} />
@@ -77,7 +77,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
       )}
       
       {/* Language Tabs */}
-      <div className={`flex border-b border-earth-200 mb-6 transition-all duration-500 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <div className={`flex border-b border-earth-200 dark:border-earth-700 mb-6 transition-all duration-500 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <button 
           className={`tab-button ${activeTab === 'all' ? 'tab-button-active' : 'tab-button-inactive'}`}
           onClick={() => setActiveTab('all')}
@@ -108,9 +108,9 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
       <div className={`space-y-6 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
         {(activeTab === 'all' || activeTab === 'sanskrit') && (
           <div className="verse-content animate-fade-in relative overflow-hidden">
-            <h3 className="text-earth-800 font-medium mb-2">Sanskrit</h3>
+            <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">Sanskrit</h3>
             <div className="relative">
-              <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-300 rounded-r-full transform -translate-y-1/2"></div>
+              <div className="absolute -left-4 top-1/2 w-2 h-8 bg-primary-400 dark:bg-primary-600 rounded-r-full transform -translate-y-1/2"></div>
               <p className="sanskrit-text pl-1">{verse.sanskrit}</p>
             </div>
           </div>
@@ -118,9 +118,9 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
         
         {(activeTab === 'all' || activeTab === 'hindi') && (
           <div className="verse-content animate-fade-in relative overflow-hidden" style={{ animationDelay: "0.1s" }}>
-            <h3 className="text-earth-800 font-medium mb-2">Hindi</h3>
+            <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">Hindi</h3>
             <div className="relative">
-              <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-200 rounded-r-full transform -translate-y-1/2"></div>
+              <div className="absolute -left-4 top-1/2 w-2 h-8 bg-primary-300 dark:bg-primary-700 rounded-r-full transform -translate-y-1/2"></div>
               <p className="hindi-text pl-1">{verse.hindi}</p>
             </div>
           </div>
@@ -128,9 +128,9 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
         
         {(activeTab === 'all' || activeTab === 'english') && (
           <div className="verse-content animate-fade-in relative overflow-hidden" style={{ animationDelay: "0.2s" }}>
-            <h3 className="text-earth-800 font-medium mb-2">English</h3>
+            <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">English</h3>
             <div className="relative">
-              <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-100 rounded-r-full transform -translate-y-1/2"></div>
+              <div className="absolute -left-4 top-1/2 w-2 h-8 bg-primary-200 dark:bg-primary-800 rounded-r-full transform -translate-y-1/2"></div>
               <p className="english-text pl-1">{verse.english}</p>
             </div>
           </div>
@@ -139,7 +139,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
       
       {/* Decorative element */}
       <div className="mt-8 flex justify-center">
-        <div className="h-px w-24 bg-gradient-to-r from-transparent via-saffron-300 to-transparent"></div>
+        <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
       </div>
     </div>
   );
