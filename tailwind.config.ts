@@ -25,8 +25,6 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))',
 					50: 'hsl(15, 63.1%, 95%)',
 					100: 'hsl(15, 63.1%, 90%)',
 					200: 'hsl(15, 63.1%, 80%)',
@@ -76,23 +74,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Background Colors
 				backgroundCustom: {
 					DEFAULT: 'hsl(40, 55%, 98%)',
 					card: 'hsl(0, 0%, 100%)',
 				},
-				// Text Colors
 				text: {
 					primary: 'hsl(24, 25%, 16%)',
 					secondary: 'hsl(24, 20%, 32%)',
 					muted: 'hsl(24, 15%, 48%)',
 				},
-				// Border and Divider Colors
 				borderCustom: {
 					DEFAULT: 'hsl(30, 20%, 87%)',
 					light: 'hsl(30, 25%, 94%)',
 				},
-				// Dark theme backgrounds
 				dark: {
 					DEFAULT: 'hsl(27, 18%, 9%)',
 					card: 'hsl(27, 15%, 15%)',
@@ -106,14 +100,12 @@ export default {
 						3: 'hsla(0, 0%, 0%, 0.09)',
 					},
 				},
-				// Dark theme text colors
 				darkText: {
 					primary: 'hsl(30, 30%, 96%)',
 					secondary: 'hsla(30, 25%, 96%, 0.85)',
 					muted: 'hsla(30, 20%, 96%, 0.7)',
 					disabled: 'hsla(30, 15%, 96%, 0.5)',
 				},
-				// Sanatan Dharma inspired colors
 				saffron: {
 					50: 'hsl(35, 100%, 97%)',
 					100: 'hsl(35, 100%, 92%)',
@@ -149,6 +141,7 @@ export default {
 					700: 'hsl(30, 45%, 25%)',
 					800: 'hsl(30, 50%, 15%)',
 					900: 'hsl(30, 55%, 10%)',
+					950: 'hsl(30, 60%, 5%)',
 				},
 				ganges: {
 					50: 'hsl(210, 100%, 97%)',
