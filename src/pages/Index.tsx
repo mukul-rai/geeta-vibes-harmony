@@ -1,7 +1,6 @@
-
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, SunMoon, Timer, ChevronRight, Feather, Quote, Heart, Star, TrendingUp } from 'lucide-react';
+import { BookOpen, SunMoon, Timer, ChevronRight, Feather, Quote, Heart, Star, TrendingUp, HeartHandshake, Sparkles } from 'lucide-react';
 import MobileLayout from '../components/MobileLayout';
 import { getProgress, getCompletionPercentage } from '../services/progressService';
 import { Progress } from '@/components/ui/progress';
@@ -17,7 +16,6 @@ const Index = () => {
   const [recommendations, setRecommendations] = useState([]);
 
   useEffect(() => {
-    // Add staggered animation effect
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 300);
@@ -26,12 +24,10 @@ const Index = () => {
     setCompletionPercentage(getCompletionPercentage());
     setReadStreak(progress.readStreak);
 
-    // Get a featured verse
     const randomChapter = Math.floor(Math.random() * 18) + 1;
     const randomVerse = Math.floor(Math.random() * 10) + 1;
     setFeaturedVerse(getVerse(randomChapter, randomVerse));
     
-    // Set some recommended chapters
     const recommendedChapters = [
       chapters.find(c => c.id === 2), // Knowledge
       chapters.find(c => c.id === 12), // Devotion
@@ -57,7 +53,6 @@ const Index = () => {
   return (
     <MobileLayout currentRoute="/">
       <div className="pt-8 px-4 pb-8">
-        {/* Decorative header with animation */}
         <div className={`mb-8 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="relative flex flex-col items-center">
             <div className="absolute -top-6 text-saffron-500/20 dark:text-saffron-400/20 text-6xl font-serif">॥ॐ॥</div>
@@ -73,7 +68,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Progress Card with improved visuals */}
         <div className={`bg-white dark:bg-earth-800 rounded-lg shadow-md border border-earth-100 dark:border-earth-700 p-5 mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="flex justify-between items-center mb-3">
             <div className="flex items-center">
@@ -109,7 +103,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Main Navigation Cards with improved visuals */}
         <div className={`grid grid-cols-1 gap-4 mb-8 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <button
             onClick={navigateToChapters}
@@ -175,7 +168,6 @@ const Index = () => {
           </button>
         </div>
         
-        {/* Featured Verse with improved visuals */}
         {featuredVerse && (
           <div className={`transition-all duration-700 delay-300 mb-8 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <div className="flex items-center justify-between mb-4">
@@ -214,7 +206,6 @@ const Index = () => {
           </div>
         )}
         
-        {/* New Section: Recommended Chapters */}
         <div className={`transition-all duration-700 delay-400 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-serif font-medium text-earth-900 dark:text-earth-100 flex items-center">
@@ -255,7 +246,6 @@ const Index = () => {
           </div>
         </div>
         
-        {/* New section: Quote of the day */}
         <div className={`mt-8 transition-all duration-700 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="bg-gradient-to-br from-saffron-100 to-saffron-200 dark:from-earth-800 dark:to-earth-700 rounded-lg p-5 shadow-md relative overflow-hidden">
             <div className="absolute top-2 left-2 opacity-20">
@@ -276,6 +266,40 @@ const Index = () => {
                   <Heart size={14} className="mr-1" /> 
                   Read full verse
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className={`mt-12 transition-all duration-700 delay-800 text-center ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="relative">
+            <div className="absolute inset-x-0 -top-6 flex justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-saffron-100 to-saffron-200 dark:from-saffron-900/30 dark:to-saffron-800/30 rounded-full flex items-center justify-center animate-pulse" style={{ animationDuration: '3s' }}>
+                <HeartHandshake className="h-6 w-6 text-saffron-500 dark:text-saffron-400" />
+              </div>
+            </div>
+            
+            <div className="pt-8 pb-3 px-6 bg-gradient-to-b from-white/50 to-white/80 dark:from-earth-800/50 dark:to-earth-800/80 backdrop-blur-sm rounded-lg border border-earth-100 dark:border-earth-700 shadow-sm">
+              <div className="flex flex-col items-center">
+                <div className="mb-2 relative">
+                  <Sparkles className="text-saffron-300 dark:text-saffron-700 h-5 w-5 absolute -top-3 -left-4 animate-spin-slow" />
+                  <p className="text-earth-800 dark:text-earth-200 text-sm font-medium">Crafted with</p>
+                  <Sparkles className="text-saffron-300 dark:text-saffron-700 h-4 w-4 absolute -top-1 -right-5 animate-spin-slow" style={{animationDuration: '4s'}} />
+                </div>
+                
+                <div className="relative inline-flex items-center mb-2">
+                  <span className="relative">
+                    <Heart className="h-5 w-5 text-maroon-500 dark:text-maroon-400 fill-maroon-500 dark:fill-maroon-400 animate-pulse" style={{animationDuration: '2s'}} />
+                    <span className="absolute -top-1 -right-1 h-2 w-2 bg-white rounded-full animate-ping opacity-75"></span>
+                  </span>
+                  <span className="ml-1.5 text-sm font-medium bg-gradient-to-r from-maroon-500 to-saffron-500 dark:from-maroon-400 dark:to-saffron-400 bg-clip-text text-transparent">
+                    & Devotion
+                  </span>
+                </div>
+                
+                <p className="text-xs text-earth-600 dark:text-earth-400">
+                  For seekers of divine wisdom everywhere
+                </p>
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import MobileLayout from '../components/MobileLayout';
 import { getCompletionPercentage } from '../services/progressService';
 import { Progress } from '@/components/ui/progress';
 import { BookOpen, Sparkles } from 'lucide-react';
+import FeaturedChaptersCarousel from '../components/FeaturedChaptersCarousel';
 
 const Chapters = () => {
   const completionPercentage = getCompletionPercentage();
@@ -33,6 +34,11 @@ const Chapters = () => {
           <p className="text-earth-700 dark:text-earth-200 text-sm max-w-xs mx-auto">
             Explore all 18 chapters of divine wisdom from the sacred text
           </p>
+        </div>
+        
+        {/* Featured Chapters Carousel */}
+        <div className="mb-8">
+          <FeaturedChaptersCarousel />
         </div>
         
         {/* Progress Bar with enhanced styling */}
