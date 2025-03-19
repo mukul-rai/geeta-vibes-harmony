@@ -19,7 +19,7 @@ const BottomNav = ({ currentRoute }: BottomNavProps) => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/90 dark:bg-earth-800/90 backdrop-blur-md border-t border-earth-100 dark:border-earth-700 shadow-lg">
+    <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/90 dark:bg-earth-800/90 backdrop-blur-md border-t border-earth-100 dark:border-earth-700 z-50">
       <div className="flex justify-around items-center h-16">
         {navItems.map((item) => {
           const isActive = currentRoute === item.path || 

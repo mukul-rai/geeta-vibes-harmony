@@ -48,137 +48,95 @@ const Index = () => {
   return (
     <MobileLayout currentRoute="/">
       <div className="pt-8 px-4 pb-8">
-        {/* Visual header with animation */}
-        <div className={`text-center mb-8 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="flex justify-center mb-4">
-            <div className="w-20 h-20 relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-saffron-100 rounded-full animate-pulse" style={{ animationDuration: '3s' }}></div>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-12 h-12 relative z-10">
-                <path fill="#E9B872" d="M256,56.4c-2.7,0-5.3,0.4-7.9,1c25.1,7,43.5,37.5,43.5,74.5c0,41.4-22.8,75-51,75s-51-33.6-51-75c0-37,18.4-67.5,43.5-74.5c-2.6-0.6-5.2-1-7.9-1c-41.4,0-75,33.6-75,75s33.6,75,75,75s75-33.6,75-75S297.4,56.4,256,56.4z"/>
-              </svg>
-            </div>
-          </div>
-          <h1 className="text-3xl font-serif font-medium text-earth-900 leading-tight mb-2">
-            श्रीमद्‍भगवद्‍गीता
+        {/* Simple Header */}
+        <div className={`mb-8 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <h1 className="text-3xl font-serif font-medium text-earth-900 dark:text-earth-50 text-center mb-2">
+            Bhagavad Gita
           </h1>
-          <p className="text-earth-700">
+          <p className="text-earth-700 dark:text-earth-300 text-center">
             Divine wisdom for everyday life
           </p>
         </div>
 
-        {/* Progress Card with animation */}
-        <div className={`bg-white rounded-lg shadow-sm p-4 mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        {/* Progress Card */}
+        <div className={`bg-white dark:bg-earth-800 rounded-lg shadow-sm p-4 mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="flex justify-between items-center mb-2">
-            <span className="text-earth-800 font-medium">Your Journey</span>
-            <span className="text-sm text-saffron-600">{completionPercentage}% Complete</span>
+            <span className="text-earth-800 dark:text-earth-200 font-medium">Your Progress</span>
+            <span className="text-sm text-saffron-600 dark:text-saffron-400">{completionPercentage}% Complete</span>
           </div>
-          <Progress value={completionPercentage} className="h-2 bg-earth-100" />
-          <div className="mt-2 text-sm text-earth-700">
+          <Progress value={completionPercentage} className="h-2 bg-earth-100 dark:bg-earth-700" />
+          <div className="mt-2 text-sm text-earth-700 dark:text-earth-300">
             {readStreak > 0 ? (
               <span className="font-medium">{readStreak} day streak!</span>
             ) : (
-              <span>Start your reading journey today!</span>
+              <span>Start your reading journey today</span>
             )}
           </div>
         </div>
 
-        {/* Quick Actions with hover effects */}
-        <div className={`grid grid-cols-2 gap-4 mb-8 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        {/* Main Navigation Cards */}
+        <div className={`grid grid-cols-1 gap-4 mb-8 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <button
             onClick={navigateToChapters}
-            className="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center h-32 transition-all duration-300 hover:bg-earth-50 hover:shadow-md hover:scale-[1.02]"
+            className="bg-white dark:bg-earth-800 rounded-lg shadow-sm p-5 flex items-center justify-between transition-all duration-300 hover:shadow-md group"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-saffron-100 rounded-full opacity-30 animate-pulse" style={{ animationDuration: '4s' }}></div>
-              <BookOpen className="h-8 w-8 text-saffron-600 mb-2 relative z-10" />
+            <div className="flex items-center">
+              <div className="bg-saffron-100 dark:bg-saffron-900/30 rounded-full p-3 mr-4">
+                <BookOpen className="h-6 w-6 text-saffron-600 dark:text-saffron-400" />
+              </div>
+              <div className="text-left">
+                <span className="font-medium text-lg text-earth-900 dark:text-earth-100">Chapters</span>
+                <p className="text-sm text-earth-600 dark:text-earth-400">18 chapters to explore</p>
+              </div>
             </div>
-            <span className="font-medium text-earth-900">Read Chapters</span>
-            <span className="text-xs text-earth-600 mt-1">18 chapters to explore</span>
+            <ChevronRight className="h-5 w-5 text-earth-400 dark:text-earth-600 group-hover:translate-x-1 transition-transform" />
           </button>
           
           <button
             onClick={navigateToDailyVerse}
-            className="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center h-32 transition-all duration-300 hover:bg-earth-50 hover:shadow-md hover:scale-[1.02]"
+            className="bg-white dark:bg-earth-800 rounded-lg shadow-sm p-5 flex items-center justify-between transition-all duration-300 hover:shadow-md group"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-saffron-100 rounded-full opacity-30 animate-pulse" style={{ animationDuration: '5s' }}></div>
-              <SunMoon className="h-8 w-8 text-saffron-600 mb-2 relative z-10" />
+            <div className="flex items-center">
+              <div className="bg-saffron-100 dark:bg-saffron-900/30 rounded-full p-3 mr-4">
+                <SunMoon className="h-6 w-6 text-saffron-600 dark:text-saffron-400" />
+              </div>
+              <div className="text-left">
+                <span className="font-medium text-lg text-earth-900 dark:text-earth-100">Daily Verse</span>
+                <p className="text-sm text-earth-600 dark:text-earth-400">Today's wisdom</p>
+              </div>
             </div>
-            <span className="font-medium text-earth-900">Verse of the Day</span>
-            <span className="text-xs text-earth-600 mt-1">Daily wisdom</span>
+            <ChevronRight className="h-5 w-5 text-earth-400 dark:text-earth-600 group-hover:translate-x-1 transition-transform" />
           </button>
           
           <button
             onClick={navigateToMeditate}
-            className="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center h-32 transition-all duration-300 hover:bg-earth-50 hover:shadow-md hover:scale-[1.02] col-span-2"
+            className="bg-white dark:bg-earth-800 rounded-lg shadow-sm p-5 flex items-center justify-between transition-all duration-300 hover:shadow-md group"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-saffron-100 rounded-full opacity-30 animate-pulse" style={{ animationDuration: '6s' }}></div>
-              <Timer className="h-8 w-8 text-saffron-600 mb-2 relative z-10" />
+            <div className="flex items-center">
+              <div className="bg-saffron-100 dark:bg-saffron-900/30 rounded-full p-3 mr-4">
+                <Timer className="h-6 w-6 text-saffron-600 dark:text-saffron-400" />
+              </div>
+              <div className="text-left">
+                <span className="font-medium text-lg text-earth-900 dark:text-earth-100">Meditate</span>
+                <p className="text-sm text-earth-600 dark:text-earth-400">Find peace within</p>
+              </div>
             </div>
-            <span className="font-medium text-earth-900">Meditate with Gita</span>
-            <span className="text-xs text-earth-600 mt-1">Find peace within</span>
+            <ChevronRight className="h-5 w-5 text-earth-400 dark:text-earth-600 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
         
-        {/* Continue Reading with animation */}
-        {completionPercentage > 0 && (
-          <div className={`mb-8 transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-serif font-medium text-earth-900">Continue Reading</h2>
-              <button 
-                onClick={navigateToChapters}
-                className="text-saffron-600 text-sm flex items-center transition-transform duration-300 hover:translate-x-1"
-              >
-                View All <ChevronRight size={16} />
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-1 gap-4">
-              {chapters.slice(0, 2).map((chapter, index) => (
-                <button
-                  key={chapter.id}
-                  onClick={() => navigate(`/chapters/${chapter.id}/1`)}
-                  className="bg-white rounded-lg shadow-sm p-4 text-left transition-all duration-300 hover:bg-earth-50 hover:shadow-md"
-                  style={{ animationDelay: `${0.1 * index}s` }}
-                >
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <span className="text-xs font-medium bg-saffron-100 text-saffron-800 rounded-full px-2 py-1">
-                        Chapter {chapter.id}
-                      </span>
-                      <h3 className="mt-2 font-serif text-lg font-medium text-earth-900">
-                        {chapter.name}
-                      </h3>
-                      <p className="text-xs text-earth-600 mt-1">
-                        {chapter.verses} verses
-                      </p>
-                    </div>
-                    <ChevronRight size={20} className="text-earth-400 transition-transform duration-300 group-hover:translate-x-1" />
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-        
-        {/* Featured Verse with glowing effect */}
+        {/* Featured Verse */}
         {featuredVerse && (
-          <div className={`transition-all duration-700 delay-400 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <h2 className="text-lg font-serif font-medium text-earth-900 mb-4">Featured Verse</h2>
-            <div className="bg-white rounded-lg shadow-sm p-5 relative overflow-hidden">
-              {/* Decorative element */}
-              <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-saffron-300 rounded-full animate-pulse" style={{ animationDuration: '4s' }}></div>
-              </div>
-              
+          <div className={`transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <h2 className="text-lg font-serif font-medium text-earth-900 dark:text-earth-100 mb-4">Featured Verse</h2>
+            <div className="bg-white dark:bg-earth-800 rounded-lg shadow-sm p-5 relative overflow-hidden">
               <div className="relative z-10">
-                <p className="font-sanskrit text-earth-900 mb-3 animate-fade-in">{featuredVerse.sanskrit}</p>
-                <p className="text-earth-700 text-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>{featuredVerse.english}</p>
+                <p className="text-earth-900 dark:text-earth-100 mb-3">{featuredVerse.sanskrit}</p>
+                <p className="text-earth-700 dark:text-earth-300 text-sm">{featuredVerse.english}</p>
                 <div className="mt-4 text-right">
                   <button 
                     onClick={() => navigate(`/chapters/${featuredVerse.chapter}/${featuredVerse.verse}`)}
-                    className="text-saffron-600 text-sm inline-flex items-center transition-all duration-300 hover:translate-x-1"
+                    className="text-saffron-600 dark:text-saffron-400 text-sm inline-flex items-center transition-all duration-300 hover:translate-x-1"
                   >
                     Read more <ChevronRight size={16} />
                   </button>

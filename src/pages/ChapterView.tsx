@@ -139,32 +139,6 @@ const ChapterView = () => {
             onPrevious={handlePreviousVerse}
           />
         )}
-        
-        <div className="mt-8 flex justify-between">
-          <button 
-            onClick={handlePreviousVerse}
-            disabled={currentVerseNumber === 1}
-            className={`px-4 py-2 rounded ${
-              currentVerseNumber === 1
-                ? 'bg-earth-100 dark:bg-earth-800 text-earth-400 dark:text-earth-600 cursor-not-allowed'
-                : 'bg-earth-100 dark:bg-earth-800 text-earth-700 dark:text-earth-300 hover:bg-earth-200 dark:hover:bg-earth-700'
-            }`}
-          >
-            Previous
-          </button>
-          
-          <button 
-            onClick={handleNextVerse}
-            disabled={currentVerseNumber === currentChapter.verses}
-            className={`px-4 py-2 rounded ${
-              currentVerseNumber === currentChapter.verses
-                ? 'bg-earth-100 dark:bg-earth-800 text-earth-400 dark:text-earth-600 cursor-not-allowed'
-                : 'bg-saffron-600 text-white hover:bg-saffron-700'
-            }`}
-          >
-            Next
-          </button>
-        </div>
       </div>
     </MobileLayout>
   );

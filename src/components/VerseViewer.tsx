@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Verse } from '../data/verses';
 import AudioPlayer from './AudioPlayer';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface VerseViewerProps {
   verse: Verse;
@@ -12,9 +13,11 @@ interface VerseViewerProps {
 }
 
 const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProps) => {
-  const [activeTab, setActiveTab] = useState<'all' | 'sanskrit' | 'hindi' | 'english'>('all');
   const [isAnimating, setIsAnimating] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Dummy image URL for verse representation
+  const dummyImageUrl = `https://source.unsplash.com/random/800x600/?spirituality,india,meditation,${verse.chapter}`;
   
   // Set initial load animation
   useEffect(() => {
@@ -35,7 +38,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
     <div className={`verse-card transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <span className="text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-100 rounded-full px-3 py-1">
+          <span className="text-xs font-medium bg-saffron-100 text-saffron-800 dark:bg-saffron-900/50 dark:text-saffron-300 rounded-full px-3 py-1">
             Chapter {verse.chapter}
           </span>
           <h2 className="mt-2 text-xl md:text-2xl font-serif font-medium text-earth-900 dark:text-earth-50">
@@ -69,6 +72,15 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
         </div>
       </div>
       
+      {/* Verse Image Representation */}
+      <div className="mb-6 rounded-lg overflow-hidden shadow-md">
+        <img 
+          src={dummyImageUrl} 
+          alt={`Visual representation of verse ${verse.verse} from chapter ${verse.chapter}`} 
+          className="w-full h-48 object-cover"
+        />
+      </div>
+      
       {/* Audio Player */}
       {verse.audioUrl && (
         <div className={`mb-6 transition-all duration-500 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
@@ -76,70 +88,74 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
         </div>
       )}
       
-      {/* Language Tabs */}
-      <div className={`flex border-b border-earth-200 dark:border-earth-700 mb-6 transition-all duration-500 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-        <button 
-          className={`tab-button ${activeTab === 'all' ? 'tab-button-active' : 'tab-button-inactive'}`}
-          onClick={() => setActiveTab('all')}
-        >
-          All
-        </button>
-        <button 
-          className={`tab-button ${activeTab === 'sanskrit' ? 'tab-button-active' : 'tab-button-inactive'}`}
-          onClick={() => setActiveTab('sanskrit')}
-        >
-          Sanskrit
-        </button>
-        <button 
-          className={`tab-button ${activeTab === 'hindi' ? 'tab-button-active' : 'tab-button-inactive'}`}
-          onClick={() => setActiveTab('hindi')}
-        >
-          Hindi
-        </button>
-        <button 
-          className={`tab-button ${activeTab === 'english' ? 'tab-button-active' : 'tab-button-inactive'}`}
-          onClick={() => setActiveTab('english')}
-        >
-          English
-        </button>
-      </div>
-      
-      {/* Verse Content with animation effects */}
-      <div className={`space-y-6 transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
-        {(activeTab === 'all' || activeTab === 'sanskrit') && (
-          <div className="verse-content animate-fade-in relative overflow-hidden">
-            <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">Sanskrit</h3>
-            <div className="relative">
-              <div className="absolute -left-4 top-1/2 w-2 h-8 bg-primary-400 dark:bg-primary-600 rounded-r-full transform -translate-y-1/2"></div>
-              <p className="sanskrit-text pl-1">{verse.sanskrit}</p>
+      {/* Language Tabs using Shadcn UI */}
+      <div className="mb-6">
+        <Tabs defaultValue="all" className="w-full">
+          <TabsList className="w-full grid grid-cols-4">
+            <TabsTrigger value="all">All</TabsTrigger>
+            <TabsTrigger value="sanskrit">Sanskrit</TabsTrigger>
+            <TabsTrigger value="hindi">Hindi</TabsTrigger>
+            <TabsTrigger value="english">English</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="all" className="space-y-6 mt-4">
+            <div className="verse-content animate-fade-in relative overflow-hidden">
+              <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">Sanskrit</h3>
+              <div className="relative">
+                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-400 dark:bg-saffron-600 rounded-r-full transform -translate-y-1/2"></div>
+                <p className="pl-1 font-sanskrit text-lg">{verse.sanskrit}</p>
+              </div>
             </div>
-          </div>
-        )}
-        
-        {(activeTab === 'all' || activeTab === 'hindi') && (
-          <div className="verse-content animate-fade-in relative overflow-hidden" style={{ animationDelay: "0.1s" }}>
-            <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">Hindi</h3>
-            <div className="relative">
-              <div className="absolute -left-4 top-1/2 w-2 h-8 bg-primary-300 dark:bg-primary-700 rounded-r-full transform -translate-y-1/2"></div>
-              <p className="hindi-text pl-1">{verse.hindi}</p>
+            
+            <div className="verse-content animate-fade-in relative overflow-hidden">
+              <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">Hindi</h3>
+              <div className="relative">
+                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-300 dark:bg-saffron-700 rounded-r-full transform -translate-y-1/2"></div>
+                <p className="pl-1 font-hindi text-lg">{verse.hindi}</p>
+              </div>
             </div>
-          </div>
-        )}
-        
-        {(activeTab === 'all' || activeTab === 'english') && (
-          <div className="verse-content animate-fade-in relative overflow-hidden" style={{ animationDelay: "0.2s" }}>
-            <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">English</h3>
-            <div className="relative">
-              <div className="absolute -left-4 top-1/2 w-2 h-8 bg-primary-200 dark:bg-primary-800 rounded-r-full transform -translate-y-1/2"></div>
-              <p className="english-text pl-1">{verse.english}</p>
+            
+            <div className="verse-content animate-fade-in relative overflow-hidden">
+              <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">English</h3>
+              <div className="relative">
+                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-200 dark:bg-saffron-800 rounded-r-full transform -translate-y-1/2"></div>
+                <p className="pl-1 text-lg">{verse.english}</p>
+              </div>
             </div>
-          </div>
-        )}
+          </TabsContent>
+          
+          <TabsContent value="sanskrit" className="mt-4">
+            <div className="verse-content relative overflow-hidden">
+              <div className="relative">
+                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-400 dark:bg-saffron-600 rounded-r-full transform -translate-y-1/2"></div>
+                <p className="pl-1 font-sanskrit text-xl">{verse.sanskrit}</p>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="hindi" className="mt-4">
+            <div className="verse-content relative overflow-hidden">
+              <div className="relative">
+                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-300 dark:bg-saffron-700 rounded-r-full transform -translate-y-1/2"></div>
+                <p className="pl-1 font-hindi text-xl">{verse.hindi}</p>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="english" className="mt-4">
+            <div className="verse-content relative overflow-hidden">
+              <div className="relative">
+                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-200 dark:bg-saffron-800 rounded-r-full transform -translate-y-1/2"></div>
+                <p className="pl-1 text-xl">{verse.english}</p>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
       
       {/* Decorative element */}
       <div className="mt-8 flex justify-center">
-        <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary-400 to-transparent"></div>
+        <div className="h-px w-24 bg-gradient-to-r from-transparent via-saffron-400 to-transparent"></div>
       </div>
     </div>
   );
