@@ -27,9 +27,10 @@ const MobileLayout = ({ children, currentRoute }: MobileLayoutProps) => {
       {/* Decorative elements */}
       <div className="fixed top-0 left-0 w-full h-64 bg-gradient-to-b from-saffron-100/30 to-transparent dark:from-saffron-900/10 dark:to-transparent pointer-events-none z-0"></div>
       
-      {/* Subtle floating circles for atmosphere */}
+      {/* Enhanced subtle floating circles for atmosphere */}
       <div className="fixed top-1/4 left-10 w-16 h-16 rounded-full bg-saffron-200/20 dark:bg-saffron-700/5 blur-xl animate-pulse pointer-events-none" style={{ animationDuration: '8s' }}></div>
       <div className="fixed bottom-1/3 right-10 w-20 h-20 rounded-full bg-saffron-100/20 dark:bg-saffron-800/5 blur-xl animate-pulse pointer-events-none" style={{ animationDuration: '12s' }}></div>
+      <div className="fixed top-1/2 right-1/4 w-12 h-12 rounded-full bg-saffron-300/10 dark:bg-saffron-600/5 blur-lg animate-pulse pointer-events-none" style={{ animationDuration: '10s' }}></div>
       
       <main className={`flex-1 pb-20 transition-opacity duration-300 relative z-10 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         {children}
