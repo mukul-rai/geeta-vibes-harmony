@@ -103,12 +103,12 @@ const AudioPlayer = ({ audioUrl }: AudioPlayerProps) => {
   };
 
   return (
-    <div className="audio-player bg-earth-50 dark:bg-earth-800/90 p-4 rounded-lg flex items-center space-x-3 border border-earth-100 dark:border-earth-700 shadow-sm">
+    <div className="audio-player bg-earth-50/70 dark:bg-earth-900/70 p-4 rounded-lg flex items-center space-x-3 border border-earth-100 dark:border-earth-800 shadow-sm backdrop-blur-sm">
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
       
       <button 
         onClick={togglePlay} 
-        className="play-button flex-shrink-0 h-10 w-10 rounded-full bg-saffron-500 dark:bg-saffron-600 text-white flex items-center justify-center hover:bg-saffron-600 dark:hover:bg-saffron-700 transition-colors shadow-sm"
+        className="play-button flex-shrink-0 h-10 w-10 rounded-full bg-saffron-500 dark:bg-saffron-600 text-white flex items-center justify-center hover:bg-saffron-600 dark:hover:bg-saffron-700 transition-colors shadow-md"
       >
         {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-1" />}
       </button>
@@ -116,16 +116,16 @@ const AudioPlayer = ({ audioUrl }: AudioPlayerProps) => {
       <div className="flex-1 mx-3">
         <div 
           ref={progressBarRef}
-          className="audio-slider h-2 bg-earth-200 dark:bg-earth-700 rounded-full cursor-pointer relative overflow-hidden"
+          className="audio-slider h-2 bg-earth-200 dark:bg-earth-800 rounded-full cursor-pointer relative overflow-hidden"
           onClick={handleProgressClick}
         >
           <div 
-            className="audio-progress h-full bg-saffron-500 dark:bg-saffron-500 rounded-full" 
+            className="audio-progress h-full bg-gradient-to-r from-saffron-400 to-saffron-500 dark:from-saffron-500 dark:to-saffron-600 rounded-full" 
             style={{ width: `${(currentTime / duration) * 100}%` }}
           ></div>
         </div>
         
-        <div className="flex justify-between text-xs text-earth-600 dark:text-earth-300 mt-1">
+        <div className="flex justify-between text-xs text-earth-600 dark:text-earth-400 mt-1">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>
@@ -134,7 +134,7 @@ const AudioPlayer = ({ audioUrl }: AudioPlayerProps) => {
       <div className="flex items-center space-x-2">
         <button 
           onClick={toggleMute}
-          className="text-earth-700 hover:text-earth-900 dark:text-earth-300 dark:hover:text-earth-100"
+          className="text-earth-700 hover:text-earth-900 dark:text-earth-400 dark:hover:text-earth-200 transition-colors"
         >
           {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </button>

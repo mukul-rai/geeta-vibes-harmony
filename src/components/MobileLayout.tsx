@@ -23,7 +23,7 @@ const MobileLayout = ({ children, currentRoute }: MobileLayoutProps) => {
   }, [currentRoute]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-earth-50 dark:bg-earth-900 max-w-md mx-auto relative overflow-hidden mandala-bg">
+    <div className="flex flex-col min-h-screen bg-earth-50 dark:bg-earth-950 max-w-md mx-auto relative overflow-hidden mandala-bg">
       {/* Decorative elements */}
       <div className="fixed top-0 left-0 w-full h-64 bg-gradient-to-b from-saffron-100/30 to-transparent dark:from-saffron-900/10 dark:to-transparent pointer-events-none z-0"></div>
       

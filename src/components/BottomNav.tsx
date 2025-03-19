@@ -19,7 +19,7 @@ const BottomNav = ({ currentRoute }: BottomNavProps) => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/90 dark:bg-earth-800/90 backdrop-blur-md border-t border-earth-100 dark:border-earth-700 z-50 shadow-sm">
+    <div className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white/90 dark:bg-earth-900/90 backdrop-blur-md border-t border-earth-100 dark:border-earth-800 z-50 shadow-md">
       <div className="flex justify-around items-center h-16">
         {navItems.map((item) => {
           const isActive = currentRoute === item.path || 
@@ -36,26 +36,26 @@ const BottomNav = ({ currentRoute }: BottomNavProps) => {
                 <span className="absolute top-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-saffron-400 dark:bg-saffron-500 rounded-b-full" />
               )}
               
-              <div className={`flex items-center justify-center w-8 h-8 mb-1 ${
+              <div className={`flex items-center justify-center w-8 h-8 mb-1 transition-all ${
                 isActive 
-                  ? 'bg-saffron-100 dark:bg-saffron-900/40 rounded-full'
-                  : 'group-hover:bg-earth-100 dark:group-hover:bg-earth-800 rounded-full transition-colors'
+                  ? 'bg-saffron-100 dark:bg-saffron-900/40 rounded-full shadow-sm'
+                  : 'group-hover:bg-earth-100 dark:group-hover:bg-earth-800 rounded-full'
               }`}>
                 <item.icon 
                   size={18} 
-                  className={`${
+                  className={`transition-colors ${
                     isActive 
                       ? 'text-saffron-600 dark:text-saffron-400' 
-                      : 'text-earth-500 dark:text-earth-400 group-hover:text-earth-700 dark:group-hover:text-earth-200'
-                  } transition-colors`}
+                      : 'text-earth-500 dark:text-earth-300 group-hover:text-earth-700 dark:group-hover:text-earth-100'
+                  }`}
                 />
               </div>
               
-              <span className={`text-xs ${
+              <span className={`text-xs transition-colors ${
                 isActive 
                   ? 'font-medium text-saffron-600 dark:text-saffron-400' 
-                  : 'text-earth-500 dark:text-earth-400 group-hover:text-earth-700 dark:group-hover:text-earth-200'
-              } transition-colors`}>
+                  : 'text-earth-500 dark:text-earth-300 group-hover:text-earth-700 dark:group-hover:text-earth-100'
+              }`}>
                 {item.label}
               </span>
             </Link>

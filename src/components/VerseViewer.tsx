@@ -73,12 +73,18 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
       </div>
       
       {/* Verse Image Representation - Use the provided Krishna-Arjuna image */}
-      <div className="mb-6 rounded-lg overflow-hidden shadow-md">
+      <div className="mb-6 rounded-lg overflow-hidden shadow-md relative">
         <img 
           src="/lovable-uploads/0d9797fd-e449-48c4-a2ad-26da62f69a0e.png" 
           alt="Krishna teaching Arjuna on the battlefield of Kurukshetra"
-          className="w-full object-cover rounded-lg"
+          className="w-full h-48 object-cover rounded-lg"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-earth-900/60 to-transparent dark:from-earth-950/70"></div>
+        <div className="absolute bottom-3 left-3 right-3">
+          <div className="inline-block px-2 py-1 bg-saffron-400/90 dark:bg-saffron-500/90 text-white text-xs rounded-full">
+            Bhagavad Gita {verse.chapter}.{verse.verse}
+          </div>
+        </div>
       </div>
       
       {/* Audio Player - Use the provided audio URL */}
@@ -89,62 +95,65 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
       {/* Language Tabs using Shadcn UI */}
       <div className="mb-6">
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="w-full grid grid-cols-4 bg-earth-100 dark:bg-earth-800">
-            <TabsTrigger value="all" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600">All</TabsTrigger>
-            <TabsTrigger value="sanskrit" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600">Sanskrit</TabsTrigger>
-            <TabsTrigger value="hindi" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600">Hindi</TabsTrigger>
-            <TabsTrigger value="english" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600">English</TabsTrigger>
+          <TabsList className="w-full grid grid-cols-4 mb-4 bg-earth-100/80 dark:bg-earth-800/50 backdrop-blur-sm rounded-lg">
+            <TabsTrigger value="all" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md">All</TabsTrigger>
+            <TabsTrigger value="sanskrit" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md">Sanskrit</TabsTrigger>
+            <TabsTrigger value="hindi" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md">Hindi</TabsTrigger>
+            <TabsTrigger value="english" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md">English</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="all" className="space-y-6 mt-4">
-            <div className="verse-content animate-fade-in relative overflow-hidden">
-              <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">Sanskrit</h3>
-              <div className="relative">
-                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-400 dark:bg-saffron-600 rounded-r-full transform -translate-y-1/2"></div>
-                <p className="pl-1 font-sanskrit text-lg">{verse.sanskrit}</p>
+          <TabsContent value="all" className="space-y-4 mt-4 animate-fade-in">
+            <div className="verse-content relative overflow-hidden">
+              <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2 flex items-center">
+                <span className="w-1.5 h-1.5 bg-saffron-400 dark:bg-saffron-500 rounded-full mr-2"></span>
+                Sanskrit
+              </h3>
+              <div className="pl-1 font-sanskrit text-lg bg-earth-50/50 dark:bg-earth-900/50 p-3 rounded-md border border-earth-200 dark:border-earth-800">
+                {verse.sanskrit}
               </div>
             </div>
             
-            <div className="verse-content animate-fade-in relative overflow-hidden">
-              <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">Hindi</h3>
-              <div className="relative">
-                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-300 dark:bg-saffron-700 rounded-r-full transform -translate-y-1/2"></div>
-                <p className="pl-1 font-hindi text-lg">{verse.hindi}</p>
+            <div className="verse-content relative overflow-hidden">
+              <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2 flex items-center">
+                <span className="w-1.5 h-1.5 bg-saffron-300 dark:bg-saffron-600 rounded-full mr-2"></span>
+                Hindi
+              </h3>
+              <div className="pl-1 font-hindi text-lg bg-earth-50/50 dark:bg-earth-900/50 p-3 rounded-md border border-earth-200 dark:border-earth-800">
+                {verse.hindi}
               </div>
             </div>
             
-            <div className="verse-content animate-fade-in relative overflow-hidden">
-              <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2">English</h3>
-              <div className="relative">
-                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-200 dark:bg-saffron-800 rounded-r-full transform -translate-y-1/2"></div>
-                <p className="pl-1 text-lg">{verse.english}</p>
+            <div className="verse-content relative overflow-hidden">
+              <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2 flex items-center">
+                <span className="w-1.5 h-1.5 bg-saffron-200 dark:bg-saffron-700 rounded-full mr-2"></span>
+                English
+              </h3>
+              <div className="pl-1 text-lg bg-earth-50/50 dark:bg-earth-900/50 p-3 rounded-md border border-earth-200 dark:border-earth-800">
+                {verse.english}
               </div>
             </div>
           </TabsContent>
           
-          <TabsContent value="sanskrit" className="mt-4">
+          <TabsContent value="sanskrit" className="mt-4 animate-fade-in">
             <div className="verse-content relative overflow-hidden">
-              <div className="relative">
-                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-400 dark:bg-saffron-600 rounded-r-full transform -translate-y-1/2"></div>
-                <p className="pl-1 font-sanskrit text-xl">{verse.sanskrit}</p>
+              <div className="pl-1 font-sanskrit text-xl bg-earth-50/50 dark:bg-earth-900/50 p-4 rounded-md border border-earth-200 dark:border-earth-800">
+                {verse.sanskrit}
               </div>
             </div>
           </TabsContent>
           
-          <TabsContent value="hindi" className="mt-4">
+          <TabsContent value="hindi" className="mt-4 animate-fade-in">
             <div className="verse-content relative overflow-hidden">
-              <div className="relative">
-                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-300 dark:bg-saffron-700 rounded-r-full transform -translate-y-1/2"></div>
-                <p className="pl-1 font-hindi text-xl">{verse.hindi}</p>
+              <div className="pl-1 font-hindi text-xl bg-earth-50/50 dark:bg-earth-900/50 p-4 rounded-md border border-earth-200 dark:border-earth-800">
+                {verse.hindi}
               </div>
             </div>
           </TabsContent>
           
-          <TabsContent value="english" className="mt-4">
+          <TabsContent value="english" className="mt-4 animate-fade-in">
             <div className="verse-content relative overflow-hidden">
-              <div className="relative">
-                <div className="absolute -left-4 top-1/2 w-2 h-8 bg-saffron-200 dark:bg-saffron-800 rounded-r-full transform -translate-y-1/2"></div>
-                <p className="pl-1 text-xl">{verse.english}</p>
+              <div className="pl-1 text-xl bg-earth-50/50 dark:bg-earth-900/50 p-4 rounded-md border border-earth-200 dark:border-earth-800">
+                {verse.english}
               </div>
             </div>
           </TabsContent>
@@ -153,7 +162,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
       
       {/* Decorative element */}
       <div className="mt-8 flex justify-center">
-        <div className="h-px w-24 bg-gradient-to-r from-transparent via-saffron-400 to-transparent"></div>
+        <div className="h-px w-24 bg-gradient-to-r from-transparent via-saffron-400 to-transparent dark:via-saffron-600"></div>
       </div>
     </div>
   );
