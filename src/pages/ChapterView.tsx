@@ -100,7 +100,7 @@ const ChapterView = () => {
     <MobileLayout currentRoute="/chapters">
       <Header showBackButton={true} onBack={handleBack} />
       
-      <div className="pt-20 px-4 pb-8">
+      <div className="pt-16 px-4 pb-24">
         <div className="mb-6">
           <div className="mt-4">
             <div className="flex justify-between items-start">

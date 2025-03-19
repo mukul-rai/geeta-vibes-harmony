@@ -16,8 +16,8 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
   const [isAnimating, setIsAnimating] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   
-  // Dummy image URL for verse representation
-  const dummyImageUrl = `https://source.unsplash.com/random/800x600/?spirituality,india,meditation,${verse.chapter}`;
+  // Use the specific audio URL for all verses
+  const audioUrl = "https://webaudioapi.com/samples/audio-tag/chrono.mp3";
   
   // Set initial load animation
   useEffect(() => {
@@ -72,30 +72,28 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
         </div>
       </div>
       
-      {/* Verse Image Representation */}
+      {/* Verse Image Representation - Use the provided Krishna-Arjuna image */}
       <div className="mb-6 rounded-lg overflow-hidden shadow-md">
         <img 
-          src={dummyImageUrl} 
-          alt={`Visual representation of verse ${verse.verse} from chapter ${verse.chapter}`} 
-          className="w-full h-48 object-cover"
+          src="/lovable-uploads/0d9797fd-e449-48c4-a2ad-26da62f69a0e.png" 
+          alt="Krishna teaching Arjuna on the battlefield of Kurukshetra"
+          className="w-full object-cover rounded-lg"
         />
       </div>
       
-      {/* Audio Player */}
-      {verse.audioUrl && (
-        <div className={`mb-6 transition-all duration-500 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <AudioPlayer audioUrl={verse.audioUrl} />
-        </div>
-      )}
+      {/* Audio Player - Use the provided audio URL */}
+      <div className={`mb-6 transition-all duration-500 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <AudioPlayer audioUrl={audioUrl} />
+      </div>
       
       {/* Language Tabs using Shadcn UI */}
       <div className="mb-6">
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="w-full grid grid-cols-4">
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="sanskrit">Sanskrit</TabsTrigger>
-            <TabsTrigger value="hindi">Hindi</TabsTrigger>
-            <TabsTrigger value="english">English</TabsTrigger>
+          <TabsList className="w-full grid grid-cols-4 bg-earth-100 dark:bg-earth-800">
+            <TabsTrigger value="all" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600">All</TabsTrigger>
+            <TabsTrigger value="sanskrit" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600">Sanskrit</TabsTrigger>
+            <TabsTrigger value="hindi" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600">Hindi</TabsTrigger>
+            <TabsTrigger value="english" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600">English</TabsTrigger>
           </TabsList>
           
           <TabsContent value="all" className="space-y-6 mt-4">
