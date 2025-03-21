@@ -1,18 +1,19 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight, Quote, Heart } from 'lucide-react';
+import { Quote, Heart } from 'lucide-react';
 import chapters from '../data/chapters';
 import { 
   Carousel,
   CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious
+  CarouselItem
 } from '@/components/ui/carousel';
 
 const FeaturedChaptersCarousel = () => {
   const navigate = useNavigate();
+  const [api, setApi] = useState(null);
+  const [current, setCurrent] = useState(0);
+  
   // Select a few featured chapters with interesting content
   const featuredChapters = [
     {
@@ -37,11 +38,40 @@ const FeaturedChaptersCarousel = () => {
     }
   ];
 
+  // Autoplay functionality
+  const autoPlay = useCallback(() => {
+    if (api) {
+      api.scrollNext();
+    }
+  }, [api]);
+
+  useEffect(() => {
+    const interval = setInterval(autoPlay, 5000);
+    return () => clearInterval(interval);
+  }, [autoPlay]);
+
+  // Track current slide for the dots
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
   return (
     <div>
       <Carousel
         opts={{ loop: true }}
         className="w-full"
+        setApi={setApi}
       >
         <CarouselContent>
           {featuredChapters.map((chapter) => (
@@ -88,15 +118,29 @@ const FeaturedChaptersCarousel = () => {
                     }}
                   >
                     Explore
-                    <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <Heart className="h-4 w-4 group-hover:fill-saffron-500 transition-all" />
                   </button>
                 </div>
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-1 bg-white/80 dark:bg-earth-800/80 hover:bg-white hover:dark:bg-earth-700" />
-        <CarouselNext className="right-1 bg-white/80 dark:bg-earth-800/80 hover:bg-white hover:dark:bg-earth-700" />
+
+        {/* Dot indicators */}
+        <div className="flex justify-center gap-1 mt-3">
+          {featuredChapters.map((_, index) => (
+            <button
+              key={index}
+              className={`h-2 rounded-full transition-all ${
+                current === index 
+                  ? "w-4 bg-saffron-500 dark:bg-saffron-400" 
+                  : "w-2 bg-earth-200 dark:bg-earth-700"
+              }`}
+              onClick={() => api?.scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </Carousel>
     </div>
   );

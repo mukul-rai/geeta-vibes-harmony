@@ -279,8 +279,12 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="pt-8 pb-3 px-6 bg-gradient-to-b from-white/50 to-white/80 dark:from-earth-800/50 dark:to-earth-800/80 backdrop-blur-sm rounded-lg border border-earth-100 dark:border-earth-700 shadow-sm">
-              <div className="flex flex-col items-center">
+            <div className="pt-8 pb-3 px-6 backdrop-blur-sm rounded-lg relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-saffron-50/50 via-white/50 to-saffron-50/50 dark:from-earth-800/50 dark:via-earth-900/30 dark:to-earth-800/50 -z-10 rounded-lg"></div>
+              <div className="absolute inset-0 overflow-hidden -z-20">
+                <div className="absolute -inset-[100%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0,_var(--tw-gradient-to)_70%)] from-saffron-100/20 to-transparent dark:from-saffron-900/10 animate-spin-slow opacity-60" style={{ animationDuration: '15s' }}></div>
+              </div>
+              <div className="flex flex-col items-center relative z-10">
                 <div className="mb-2 relative">
                   <Sparkles className="text-saffron-300 dark:text-saffron-700 h-5 w-5 absolute -top-3 -left-4 animate-spin-slow" />
                   <p className="text-earth-800 dark:text-earth-200 text-sm font-medium">Crafted with</p>
