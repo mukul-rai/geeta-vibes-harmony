@@ -49,7 +49,7 @@ const Index = () => {
   const navigateToMeditate = () => {
     navigate('/meditate');
   };
-
+  
   return (
     <MobileLayout currentRoute="/">
       <div className="pt-8 px-4 pb-8">
@@ -271,39 +271,55 @@ const Index = () => {
           </div>
         </div>
         
-        <div className={`mt-12 transition-all duration-700 delay-800 text-center ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="relative">
-            <div className="absolute inset-x-0 -top-6 flex justify-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-saffron-100 to-saffron-200 dark:from-saffron-900/30 dark:to-saffron-800/30 rounded-full flex items-center justify-center animate-pulse" style={{ animationDuration: '3s' }}>
-                <HeartHandshake className="h-6 w-6 text-saffron-500 dark:text-saffron-400" />
+        <div className={`mt-12 mb-4 transition-all duration-700 delay-800 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <div className="relative flex justify-center">
+            {/* Floating element with glow effect */}
+            <div className="absolute -top-8 flex justify-center items-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-saffron-100 to-saffron-200 dark:from-saffron-900/50 dark:to-saffron-800/50 rounded-full flex items-center justify-center shadow-lg relative">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-saffron-300/20 to-maroon-300/20 dark:from-saffron-700/20 dark:to-maroon-700/20 animate-pulse"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-saffron-300/10 to-maroon-300/10 dark:from-saffron-700/10 dark:to-maroon-700/10 animate-spin-slow" style={{animationDuration: '10s'}}></div>
+                <HeartHandshake className="h-8 w-8 text-saffron-600 dark:text-saffron-400 z-10" />
               </div>
             </div>
             
-            <div className="pt-8 pb-3 px-6 backdrop-blur-sm rounded-lg relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-saffron-50/50 via-white/50 to-saffron-50/50 dark:from-earth-800/50 dark:via-earth-900/30 dark:to-earth-800/50 -z-10 rounded-lg"></div>
-              <div className="absolute inset-0 overflow-hidden -z-20">
-                <div className="absolute -inset-[100%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0,_var(--tw-gradient-to)_70%)] from-saffron-100/20 to-transparent dark:from-saffron-900/10 animate-spin-slow opacity-60" style={{ animationDuration: '15s' }}></div>
+            {/* Main content with blurred background */}
+            <div className="w-full max-w-xs pt-10 pb-6 px-8 relative overflow-hidden">
+              {/* Background elements */}
+              <div className="absolute inset-0 bg-gradient-to-r from-saffron-50/80 via-white/80 to-saffron-50/80 dark:from-earth-800/80 dark:via-earth-900/80 dark:to-earth-800/80 backdrop-blur-sm rounded-xl border border-saffron-100 dark:border-saffron-900/50 shadow-md"></div>
+              
+              {/* Animated background particles */}
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute h-2 w-2 rounded-full bg-saffron-200 dark:bg-saffron-700 top-[20%] left-[15%] animate-pulse" style={{animationDuration: '3s'}}></div>
+                <div className="absolute h-1.5 w-1.5 rounded-full bg-maroon-200 dark:bg-maroon-700 top-[60%] left-[80%] animate-pulse" style={{animationDuration: '2.5s'}}></div>
+                <div className="absolute h-1 w-1 rounded-full bg-saffron-300 dark:bg-saffron-600 bottom-[15%] left-[40%] animate-pulse" style={{animationDuration: '4s'}}></div>
+                <div className="absolute -inset-[100%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0,_var(--tw-gradient-to)_70%)] from-saffron-100/10 to-transparent dark:from-saffron-900/5 animate-spin-slow opacity-60" style={{animationDuration: '15s'}}></div>
               </div>
+              
+              {/* Content */}
               <div className="flex flex-col items-center relative z-10">
-                <div className="mb-2 relative">
-                  <Sparkles className="text-saffron-300 dark:text-saffron-700 h-5 w-5 absolute -top-3 -left-4 animate-spin-slow" />
+                <div className="relative mb-2.5">
+                  <Sparkles className="text-saffron-400 dark:text-saffron-600 h-4 w-4 absolute -top-2 -left-6 animate-spin-slow" style={{animationDuration: '8s'}} />
                   <p className="text-earth-800 dark:text-earth-200 text-sm font-medium">Crafted with</p>
-                  <Sparkles className="text-saffron-300 dark:text-saffron-700 h-4 w-4 absolute -top-1 -right-5 animate-spin-slow" style={{animationDuration: '4s'}} />
+                  <Sparkles className="text-saffron-400 dark:text-saffron-600 h-3 w-3 absolute -top-1 -right-4 animate-spin-slow" style={{animationDuration: '6s'}} />
                 </div>
                 
-                <div className="relative inline-flex items-center mb-2">
-                  <span className="relative">
+                <div className="flex items-center space-x-2 mb-3">
+                  <div className="relative">
                     <Heart className="h-5 w-5 text-maroon-500 dark:text-maroon-400 fill-maroon-500 dark:fill-maroon-400 animate-pulse" style={{animationDuration: '2s'}} />
-                    <span className="absolute -top-1 -right-1 h-2 w-2 bg-white rounded-full animate-ping opacity-75"></span>
-                  </span>
-                  <span className="ml-1.5 text-sm font-medium bg-gradient-to-r from-maroon-500 to-saffron-500 dark:from-maroon-400 dark:to-saffron-400 bg-clip-text text-transparent">
+                    <span className="absolute -top-1 -right-1 h-1.5 w-1.5 bg-white dark:bg-maroon-300 rounded-full animate-ping opacity-75" style={{animationDuration: '2.5s'}}></span>
+                  </div>
+                  <span className="text-sm font-medium bg-gradient-to-r from-maroon-500 to-saffron-500 dark:from-maroon-400 dark:to-saffron-400 bg-clip-text text-transparent">
                     & Devotion
                   </span>
                 </div>
                 
-                <p className="text-xs text-earth-600 dark:text-earth-400">
-                  For seekers of divine wisdom everywhere
+                <p className="text-xs text-earth-600 dark:text-earth-400 text-center leading-relaxed">
+                  For seekers of divine wisdom on their spiritual journey
                 </p>
+                
+                <div className="mt-3 pt-3 border-t border-saffron-100 dark:border-saffron-900/30 w-16 flex justify-center">
+                  <span className="text-[10px] uppercase tracking-wider text-earth-500 dark:text-earth-500 font-medium">Bhagavad Gita</span>
+                </div>
               </div>
             </div>
           </div>
