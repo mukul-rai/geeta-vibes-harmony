@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, LogOut, Moon, Sun, ChevronRight } from 'lucide-react';
+import { User, LogOut, Moon, Sun, ChevronRight, Bell } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Switch } from '@/components/ui/switch';
@@ -38,13 +38,13 @@ const Profile = () => {
   return (
     <MobileLayout currentRoute="/profile">
       <div className="px-4 py-6 animate-fade-in">
-        <h1 className="text-2xl font-medium text-earth-900 dark:text-earth-100 mb-6">My Account</h1>
+        <h1 className="text-2xl font-medium text-earth-900 dark:text-earth-100 mb-6 text-center">My Account</h1>
         
         <div className="bg-white dark:bg-earth-800 rounded-xl p-6 mb-6 shadow-sm">
           <div className="flex items-center space-x-4">
             <Avatar className="h-16 w-16 border-2 border-saffron-200">
               <AvatarImage src={user.profilePicture || ''} alt={user.name} />
-              <AvatarFallback className="bg-saffron-100 text-saffron-700 text-lg">{user.name.charAt(0)}</AvatarFallback>
+              <AvatarFallback className="bg-saffron-100 text-saffron-700 text-lg flex items-center justify-center">{user.name.charAt(0)}</AvatarFallback>
             </Avatar>
             <div>
               <h2 className="text-xl font-medium text-earth-900 dark:text-earth-100">{user.name}</h2>
@@ -83,7 +83,7 @@ const Profile = () => {
             
             <div className="p-4 flex items-center justify-between cursor-pointer" onClick={() => navigate('/notifications')}>
               <div className="flex items-center gap-3">
-                <Sun className="text-earth-600 dark:text-earth-300" size={20} />
+                <Bell className="text-earth-600 dark:text-earth-300" size={20} />
                 <span className="text-earth-800 dark:text-earth-200">Notifications</span>
               </div>
               <ChevronRight className="text-earth-400" size={20} />

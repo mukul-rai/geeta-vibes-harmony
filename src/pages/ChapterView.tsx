@@ -111,7 +111,7 @@ const ChapterView = () => {
                 <h1 className="mt-2 text-2xl font-serif font-medium text-earth-900 dark:text-earth-100">
                   {currentChapter.name}
                 </h1>
-                <p className="mt-1 text-lg font-sanskrit text-earth-800 dark:text-earth-200">
+                <p className="mt-1 text-lg font-sanskrit text-earth-800 dark:text-earth-200 text-center">
                   {currentChapter.nameSanskrit}
                 </p>
               </div>
@@ -119,7 +119,7 @@ const ChapterView = () => {
               <button
                 onClick={handleMarkAsRead}
                 disabled={isRead}
-                className={`p-2 rounded-full ${
+                className={`p-2 rounded-full flex items-center justify-center ${
                   isRead 
                     ? 'bg-saffron-100 dark:bg-saffron-900/50 text-saffron-600 dark:text-saffron-400 cursor-not-allowed' 
                     : 'bg-saffron-500 text-white hover:bg-saffron-600'

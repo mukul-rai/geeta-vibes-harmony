@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -87,6 +88,11 @@
   .font-sanskrit, .font-hindi, .font-devanagari {
     @apply text-center leading-relaxed tracking-normal;
   }
+
+  /* Fix for text centering in badges and rounded elements */
+  .rounded-full, .rounded-lg, .rounded-md, .rounded-sm {
+    @apply flex items-center justify-center;
+  }
 }
 
 .container-custom {
@@ -133,7 +139,7 @@
   }
 
   .tab-button {
-    @apply px-4 py-2 font-medium text-sm transition-colors rounded-full;
+    @apply px-4 py-2 font-medium text-sm transition-colors rounded-full flex items-center justify-center;
   }
 
   .tab-button-active {
@@ -277,6 +283,16 @@
     line-height: 1.6;
     letter-spacing: 0.01em;
   }
+
+  /* Improved text centering for badges and pills */
+  .badge-centered {
+    @apply flex items-center justify-center text-center;
+  }
+  
+  /* Fix for content centering in circles and rounded elements */
+  .circle-content {
+    @apply flex items-center justify-center;
+  }
 }
 
 .audio-player {
@@ -296,7 +312,7 @@
 }
 
 .tabs-trigger {
-  @apply px-4 py-2 text-sm font-medium transition-colors rounded-md;
+  @apply px-4 py-2 text-sm font-medium transition-colors rounded-md flex items-center justify-center;
 }
 
 .tabs-trigger[data-state="active"] {

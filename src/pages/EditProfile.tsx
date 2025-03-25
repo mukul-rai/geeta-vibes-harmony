@@ -53,7 +53,7 @@ const EditProfile = () => {
           <Button 
             variant="ghost" 
             size="icon" 
-            className="mr-2"
+            className="mr-2 flex items-center justify-center"
             onClick={() => navigate('/profile')}
           >
             <ArrowLeft className="h-5 w-5" />
@@ -65,17 +65,17 @@ const EditProfile = () => {
           <div className="relative group">
             <Avatar className="h-24 w-24 border-2 border-saffron-200 group-hover:opacity-80 transition-opacity">
               <AvatarImage src={user.profilePicture || ''} alt={user.name} />
-              <AvatarFallback className="bg-saffron-100 text-saffron-700 text-xl">{user.name.charAt(0)}</AvatarFallback>
+              <AvatarFallback className="bg-saffron-100 text-saffron-700 text-xl flex items-center justify-center">{user.name.charAt(0)}</AvatarFallback>
             </Avatar>
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="bg-earth-900 bg-opacity-50 rounded-full p-2">
+              <div className="bg-earth-900 bg-opacity-50 rounded-full p-2 flex items-center justify-center">
                 <Camera className="h-5 w-5 text-white" />
               </div>
             </div>
           </div>
           <Button 
             variant="ghost" 
-            className="mt-2 text-saffron-600 hover:text-saffron-700 hover:bg-transparent"
+            className="mt-2 text-saffron-600 hover:text-saffron-700 hover:bg-transparent flex items-center justify-center"
           >
             Change Photo
           </Button>
@@ -88,7 +88,7 @@ const EditProfile = () => {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="bg-white dark:bg-earth-800"
+              className="bg-white dark:bg-earth-800 text-center"
             />
           </div>
           
@@ -99,13 +99,13 @@ const EditProfile = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-white dark:bg-earth-800"
+              className="bg-white dark:bg-earth-800 text-center"
             />
           </div>
           
           <Button 
             type="submit" 
-            className="w-full bg-saffron-600 hover:bg-saffron-700 dark:bg-saffron-700 dark:hover:bg-saffron-800"
+            className="w-full bg-saffron-600 hover:bg-saffron-700 dark:bg-saffron-700 dark:hover:bg-saffron-800 flex items-center justify-center"
             disabled={isSaving}
           >
             {isSaving ? "Saving Changes..." : "Save Changes"}

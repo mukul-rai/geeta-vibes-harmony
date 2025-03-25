@@ -41,7 +41,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
           <span className="text-xs font-medium bg-saffron-100 text-saffron-800 dark:bg-saffron-900/50 dark:text-saffron-300 rounded-full px-3 py-1 inline-flex items-center justify-center">
             Chapter {verse.chapter}
           </span>
-          <h2 className="mt-2 text-xl md:text-2xl font-serif font-medium text-earth-900 dark:text-earth-50">
+          <h2 className="mt-2 text-xl md:text-2xl font-serif font-medium text-earth-900 dark:text-earth-50 text-center">
             Verse {verse.verse} of {totalVerses}
           </h2>
         </div>
@@ -50,7 +50,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
           <button 
             onClick={onPrevious}
             disabled={verse.verse === 1}
-            className={`p-2 rounded-full transition-transform duration-200 ${
+            className={`p-2 rounded-full transition-transform duration-200 flex items-center justify-center ${
               verse.verse === 1 
                 ? 'text-earth-400 bg-earth-100 dark:text-earth-500 dark:bg-earth-900 cursor-not-allowed' 
                 : 'text-earth-700 bg-earth-100 hover:bg-earth-200 dark:text-earth-200 dark:bg-earth-800 dark:hover:bg-earth-700 hover:scale-105'
@@ -61,7 +61,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
           <button 
             onClick={onNext}
             disabled={verse.verse === totalVerses}
-            className={`p-2 rounded-full transition-transform duration-200 ${
+            className={`p-2 rounded-full transition-transform duration-200 flex items-center justify-center ${
               verse.verse === totalVerses 
                 ? 'text-earth-400 bg-earth-100 dark:text-earth-500 dark:bg-earth-900 cursor-not-allowed' 
                 : 'text-earth-700 bg-earth-100 hover:bg-earth-200 dark:text-earth-200 dark:bg-earth-800 dark:hover:bg-earth-700 hover:scale-105'
@@ -81,7 +81,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
         />
         <div className="absolute inset-0 bg-gradient-to-t from-earth-900/60 to-transparent dark:from-earth-950/70"></div>
         <div className="absolute bottom-3 left-3 right-3">
-          <div className="inline-block px-2 py-1 bg-saffron-400/90 dark:bg-saffron-500/90 text-white text-xs rounded-full">
+          <div className="inline-block px-2 py-1 bg-saffron-400/90 dark:bg-saffron-500/90 text-white text-xs rounded-full text-center flex items-center justify-center">
             Bhagavad Gita {verse.chapter}.{verse.verse}
           </div>
         </div>
@@ -96,10 +96,10 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
       <div className="mb-6">
         <Tabs defaultValue="all" className="w-full">
           <TabsList className="w-full grid grid-cols-4 mb-4 bg-earth-100/80 dark:bg-earth-800/50 backdrop-blur-sm rounded-lg">
-            <TabsTrigger value="all" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md">All</TabsTrigger>
-            <TabsTrigger value="sanskrit" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md">Sanskrit</TabsTrigger>
-            <TabsTrigger value="hindi" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md">Hindi</TabsTrigger>
-            <TabsTrigger value="english" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md">English</TabsTrigger>
+            <TabsTrigger value="all" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md flex items-center justify-center">All</TabsTrigger>
+            <TabsTrigger value="sanskrit" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md flex items-center justify-center">Sanskrit</TabsTrigger>
+            <TabsTrigger value="hindi" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md flex items-center justify-center">Hindi</TabsTrigger>
+            <TabsTrigger value="english" className="data-[state=active]:bg-saffron-500 data-[state=active]:text-white dark:data-[state=active]:bg-saffron-600 rounded-md flex items-center justify-center">English</TabsTrigger>
           </TabsList>
           
           <TabsContent value="all" className="space-y-4 mt-4 animate-fade-in">
