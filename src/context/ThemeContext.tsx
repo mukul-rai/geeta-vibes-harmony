@@ -14,12 +14,15 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
+    // Check for saved theme preference in local storage
     const savedTheme = localStorage.getItem('theme') as Theme;
+    // If not found, use system preference with fallback to light
     return savedTheme || 
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   });
 
   useEffect(() => {
+    // Save theme preference
     localStorage.setItem('theme', theme);
     
     // Apply theme to document
@@ -34,10 +37,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
+  // Icon component with reduced brightness for better eye comfort
   const ThemeIcon = () => {
     return theme === 'dark' ? 
-      <Sun className="h-5 w-5 text-saffron-400" /> : 
-      <Moon className="h-5 w-5 text-earth-700" />;
+      <Sun className="h-5 w-5 text-saffron-400/90" /> : 
+      <Moon className="h-5 w-5 text-earth-700/90" />;
   };
 
   return (

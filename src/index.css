@@ -14,65 +14,65 @@
   --popover: 0 0% 100%;
   --popover-foreground: 24 25% 16%;
   
-  --primary: 15 63.1% 59.6%;
+  --primary: 15 60% 60%;
   --primary-foreground: 0 0% 100%;
   
   --secondary: 30 30% 96%;
-  --secondary-foreground: 15 63.1% 59.6%;
+  --secondary-foreground: 15 60% 60%;
   
   --muted: 30 40% 96%;
   --muted-foreground: 24 15% 48%;
   
   --accent: 30 30% 96%;
-  --accent-foreground: 15 63.1% 59.6%;
+  --accent-foreground: 15 60% 60%;
   
-  --destructive: 0 84% 60%;
+  --destructive: 0 80% 60%;
   --destructive-foreground: 0 0% 100%;
   
   --border: 30 20% 87%;
   --input: 30 20% 87%;
-  --ring: 15 63.1% 59.6%;
+  --ring: 15 60% 60%;
   
   --radius: 0.5rem;
   
-  --sidebar-background: 27 18% 9%;
-  --sidebar-foreground: 30 30% 96%;
-  --sidebar-primary: 15 63.1% 59.6%;
+  --sidebar-background: 27 15% 9%;
+  --sidebar-foreground: 30 25% 96%;
+  --sidebar-primary: 15 60% 60%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 27 15% 15%;
-  --sidebar-accent-foreground: 30 30% 96%;
+  --sidebar-accent-foreground: 30 25% 96%;
   --sidebar-border: 27 8% 18%;
-  --sidebar-ring: 15 63.1% 59.6%;
+  --sidebar-ring: 15 60% 60%;
 }
 
 .dark {
-  --background: 27 18% 6%; /* Darker background for better contrast */
-  --foreground: 30 30% 98%;
+  --background: 27 18% 7%;
+  --foreground: 30 25% 98%;
   
-  --card: 27 15% 12%; /* Darker card for better contrast */
-  --card-foreground: 30 30% 98%;
+  --card: 27 15% 13%;
+  --card-foreground: 30 25% 98%;
   
-  --popover: 27 18% 6%;
-  --popover-foreground: 30 30% 98%;
+  --popover: 27 18% 7%;
+  --popover-foreground: 30 25% 98%;
   
-  --primary: 15 63.1% 59.6%;
+  --primary: 15 60% 60%;
   --primary-foreground: 0 0% 100%;
   
-  --secondary: 27 12% 16%;
-  --secondary-foreground: 30 30% 98%;
+  --secondary: 27 12% 17%;
+  --secondary-foreground: 30 25% 98%;
   
-  --muted: 27 10% 15%;
+  --muted: 27 10% 16%;
   --muted-foreground: 30 25% 90%;
   
-  --accent: 27 12% 16%;
-  --accent-foreground: 30 30% 98%;
+  --accent: 27 12% 17%;
+  --accent-foreground: 30 25% 98%;
   
-  --destructive: 0 70% 50%;
+  --destructive: 0 65% 50%;
   --destructive-foreground: 0 0% 100%;
   
   --border: 27 8% 18%;
   --input: 27 8% 18%;
-  --ring: 15 63.1% 59.6%;
+  --ring: 15 60% 60%;
 }
 
 @layer base {
@@ -129,11 +129,11 @@
   }
 
   .tab-button-active {
-    @apply text-white bg-saffron-500 dark:bg-saffron-600 shadow-sm;
+    @apply text-white bg-saffron-500/90 dark:bg-saffron-600/90 shadow-sm;
   }
 
   .tab-button-inactive {
-    @apply text-text-secondary dark:text-darkText-secondary hover:bg-saffron-50 dark:hover:bg-saffron-900/30;
+    @apply text-text-secondary/90 dark:text-darkText-secondary/90 hover:bg-saffron-50/90 dark:hover:bg-saffron-900/20;
   }
 }
 
@@ -184,12 +184,12 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
 }
 
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
 }
 
 @layer utilities {
@@ -219,12 +219,12 @@
   }
 
   .glass-card {
-    @apply bg-white/80 dark:bg-dark-card/70 backdrop-blur-sm;
+    @apply bg-white/70 dark:bg-dark-card/60 backdrop-blur-sm;
   }
 
   .om-symbol::before {
-    content: '॥ॐ॥';
-    @apply absolute top-2 left-2 opacity-10 text-saffron-600 dark:text-saffron-400 text-3xl font-bold pointer-events-none;
+    content: "ॐ";
+    @apply absolute -top-2 -left-2 text-saffron-300/15 dark:text-saffron-700/15 text-3xl;
   }
 
   .lotus-border {
@@ -240,7 +240,7 @@
   }
 
   .saffron-glow {
-    box-shadow: 0 0 15px rgba(255, 150, 58, 0.2);
+    box-shadow: 0 0 12px rgba(255, 150, 58, 0.15);
   }
 
   .divided-section::after {
@@ -317,7 +317,7 @@ input[type="range"]::-ms-thumb {
 
 .om-symbol::before {
   content: "ॐ";
-  @apply absolute -top-2 -left-2 text-saffron-300 dark:text-saffron-700 opacity-20 text-3xl;
+  @apply absolute -top-2 -left-2 text-saffron-300/15 dark:text-saffron-700/15 text-3xl;
 }
 
 .decorative-border {
