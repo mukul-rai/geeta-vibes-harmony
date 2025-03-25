@@ -104,8 +104,8 @@ const ChapterView = () => {
         <div className="mb-6">
           <div className="mt-4">
             <div className="flex justify-between items-start">
-              <div>
-                <span className="text-xs font-medium bg-saffron-100 dark:bg-saffron-900/50 text-saffron-800 dark:text-saffron-300 rounded-full px-3 py-1">
+              <div className="text-left">
+                <span className="text-xs font-medium bg-saffron-100 dark:bg-saffron-900/50 text-saffron-800 dark:text-saffron-300 rounded-full px-3 py-1 inline-flex items-center justify-center">
                   Chapter {currentChapter.id}
                 </span>
                 <h1 className="mt-2 text-2xl font-serif font-medium text-earth-900 dark:text-earth-100">

@@ -77,7 +77,15 @@
 
 @layer base {
   body {
-    @apply bg-earth-50 dark:bg-earth-900 text-earth-900 dark:text-earth-100;
+    @apply bg-earth-50 dark:bg-earth-900 text-earth-900 dark:text-earth-100 text-center;
+  }
+  
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    @apply leading-normal;
+  }
+  
+  .font-sanskrit, .font-hindi, .font-devanagari {
+    @apply text-center leading-relaxed tracking-normal;
   }
 }
 
@@ -113,15 +121,15 @@
   }
 
   .sanskrit-text {
-    @apply text-text-primary dark:text-darkText-primary leading-relaxed relative z-10;
+    @apply text-text-primary dark:text-darkText-primary leading-relaxed relative z-10 text-center;
   }
 
   .hindi-text {
-    @apply text-text-secondary dark:text-darkText-secondary leading-relaxed relative z-10;
+    @apply text-text-secondary dark:text-darkText-secondary leading-relaxed relative z-10 text-center;
   }
 
   .english-text {
-    @apply text-text-muted dark:text-darkText-muted leading-relaxed relative z-10;
+    @apply text-text-muted dark:text-darkText-muted leading-relaxed relative z-10 text-center;
   }
 
   .tab-button {
@@ -255,6 +263,19 @@
   .sacred-heading::before, .sacred-heading::after {
     content: '❖';
     @apply text-saffron-300 dark:text-saffron-700 mx-2 opacity-70 text-xs;
+  }
+
+  .text-align-center {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .text-gita {
+    text-align: center;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
   }
 }
 
