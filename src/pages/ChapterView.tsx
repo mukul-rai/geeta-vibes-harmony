@@ -85,8 +85,8 @@ const ChapterView = () => {
       <MobileLayout currentRoute="/chapters">
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <div className="mb-4 text-saffron-500 flex justify-center">
-              <BookOpen size={48} />
+            <div className="mb-4 text-saffron-500">
+              <BookOpen size={48} className="mx-auto" />
             </div>
             <h2 className="text-2xl font-serif font-medium text-earth-900 dark:text-earth-100 mb-2">Loading verse...</h2>
             <p className="text-earth-700 dark:text-earth-300">Please wait while we retrieve the wisdom.</p>
@@ -104,8 +104,8 @@ const ChapterView = () => {
         <div className="mb-6">
           <div className="mt-4">
             <div className="flex justify-between items-start">
-              <div className="text-left">
-                <span className="text-xs font-medium bg-saffron-100 dark:bg-saffron-900/50 text-saffron-800 dark:text-saffron-300 rounded-full px-3 py-1 inline-flex items-center justify-center">
+              <div>
+                <span className="text-xs font-medium bg-saffron-100 dark:bg-saffron-900/50 text-saffron-800 dark:text-saffron-300 rounded-full px-3 py-1">
                   Chapter {currentChapter.id}
                 </span>
                 <h1 className="mt-2 text-2xl font-serif font-medium text-earth-900 dark:text-earth-100">
@@ -119,7 +119,7 @@ const ChapterView = () => {
               <button
                 onClick={handleMarkAsRead}
                 disabled={isRead}
-                className={`p-2 rounded-full flex items-center justify-center ${
+                className={`p-2 rounded-full ${
                   isRead 
                     ? 'bg-saffron-100 dark:bg-saffron-900/50 text-saffron-600 dark:text-saffron-400 cursor-not-allowed' 
                     : 'bg-saffron-500 text-white hover:bg-saffron-600'

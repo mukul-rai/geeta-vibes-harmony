@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -78,20 +77,7 @@
 
 @layer base {
   body {
-    @apply bg-earth-50 dark:bg-earth-900 text-earth-900 dark:text-earth-100 text-center;
-  }
-  
-  h1, h2, h3, h4, h5, h6, p, span, div {
-    @apply leading-normal;
-  }
-  
-  .font-sanskrit, .font-hindi, .font-devanagari {
-    @apply text-center leading-relaxed tracking-normal;
-  }
-
-  /* Fix for text centering in badges and rounded elements */
-  .rounded-full, .rounded-lg, .rounded-md, .rounded-sm {
-    @apply flex items-center justify-center;
+    @apply bg-earth-50 dark:bg-earth-900 text-earth-900 dark:text-earth-100;
   }
 }
 
@@ -127,19 +113,19 @@
   }
 
   .sanskrit-text {
-    @apply text-text-primary dark:text-darkText-primary leading-relaxed relative z-10 text-center;
+    @apply text-text-primary dark:text-darkText-primary leading-relaxed relative z-10;
   }
 
   .hindi-text {
-    @apply text-text-secondary dark:text-darkText-secondary leading-relaxed relative z-10 text-center;
+    @apply text-text-secondary dark:text-darkText-secondary leading-relaxed relative z-10;
   }
 
   .english-text {
-    @apply text-text-muted dark:text-darkText-muted leading-relaxed relative z-10 text-center;
+    @apply text-text-muted dark:text-darkText-muted leading-relaxed relative z-10;
   }
 
   .tab-button {
-    @apply px-4 py-2 font-medium text-sm transition-colors rounded-full flex items-center justify-center;
+    @apply px-4 py-2 font-medium text-sm transition-colors rounded-full;
   }
 
   .tab-button-active {
@@ -270,29 +256,6 @@
     content: '❖';
     @apply text-saffron-300 dark:text-saffron-700 mx-2 opacity-70 text-xs;
   }
-
-  .text-align-center {
-    text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .text-gita {
-    text-align: center;
-    line-height: 1.6;
-    letter-spacing: 0.01em;
-  }
-
-  /* Improved text centering for badges and pills */
-  .badge-centered {
-    @apply flex items-center justify-center text-center;
-  }
-  
-  /* Fix for content centering in circles and rounded elements */
-  .circle-content {
-    @apply flex items-center justify-center;
-  }
 }
 
 .audio-player {
@@ -312,7 +275,7 @@
 }
 
 .tabs-trigger {
-  @apply px-4 py-2 text-sm font-medium transition-colors rounded-md flex items-center justify-center;
+  @apply px-4 py-2 text-sm font-medium transition-colors rounded-md;
 }
 
 .tabs-trigger[data-state="active"] {
