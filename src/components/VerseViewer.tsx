@@ -105,30 +105,30 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
           <TabsContent value="all" className="space-y-4 mt-4 animate-fade-in">
             <div className="verse-content relative overflow-hidden">
               <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2 flex items-center">
-                <span className="w-1.5 h-1.5 bg-saffron-400 dark:bg-saffron-500 rounded-full mr-2"></span>
+                <span className="w-1.5 h-1.5 bg-saffron-400 dark:bg-saffron-500 rounded-full mr-2 flex items-center justify-center"></span>
                 Sanskrit
               </h3>
-              <div className="pl-1 font-sanskrit text-lg bg-earth-50/50 dark:bg-earth-900/50 p-3 rounded-md border border-earth-200 dark:border-earth-800 text-center">
+              <div className="pl-1 font-sanskrit text-lg bg-earth-50/50 dark:bg-earth-900/50 p-3 rounded-md border border-earth-200 dark:border-earth-800 text-center flex items-center justify-center">
                 {verse.sanskrit}
               </div>
             </div>
             
             <div className="verse-content relative overflow-hidden">
               <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2 flex items-center">
-                <span className="w-1.5 h-1.5 bg-saffron-300 dark:bg-saffron-600 rounded-full mr-2"></span>
+                <span className="w-1.5 h-1.5 bg-saffron-300 dark:bg-saffron-600 rounded-full mr-2 flex items-center justify-center"></span>
                 Hindi
               </h3>
-              <div className="pl-1 font-hindi text-lg bg-earth-50/50 dark:bg-earth-900/50 p-3 rounded-md border border-earth-200 dark:border-earth-800 text-center">
+              <div className="pl-1 font-hindi text-lg bg-earth-50/50 dark:bg-earth-900/50 p-3 rounded-md border border-earth-200 dark:border-earth-800 text-center flex items-center justify-center">
                 {verse.hindi}
               </div>
             </div>
             
             <div className="verse-content relative overflow-hidden">
               <h3 className="text-earth-800 dark:text-earth-100 font-medium mb-2 flex items-center">
-                <span className="w-1.5 h-1.5 bg-saffron-200 dark:bg-saffron-700 rounded-full mr-2"></span>
+                <span className="w-1.5 h-1.5 bg-saffron-200 dark:bg-saffron-700 rounded-full mr-2 flex items-center justify-center"></span>
                 English
               </h3>
-              <div className="pl-1 text-lg bg-earth-50/50 dark:bg-earth-900/50 p-3 rounded-md border border-earth-200 dark:border-earth-800 text-center">
+              <div className="pl-1 text-lg bg-earth-50/50 dark:bg-earth-900/50 p-3 rounded-md border border-earth-200 dark:border-earth-800 text-center flex items-center justify-center">
                 {verse.english}
               </div>
             </div>
@@ -136,7 +136,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
           
           <TabsContent value="sanskrit" className="mt-4 animate-fade-in">
             <div className="verse-content relative overflow-hidden">
-              <div className="pl-1 font-sanskrit text-xl bg-earth-50/50 dark:bg-earth-900/50 p-4 rounded-md border border-earth-200 dark:border-earth-800 text-center">
+              <div className="pl-1 font-sanskrit text-xl bg-earth-50/50 dark:bg-earth-900/50 p-4 rounded-md border border-earth-200 dark:border-earth-800 text-center flex items-center justify-center">
                 {verse.sanskrit}
               </div>
             </div>
@@ -144,7 +144,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
           
           <TabsContent value="hindi" className="mt-4 animate-fade-in">
             <div className="verse-content relative overflow-hidden">
-              <div className="pl-1 font-hindi text-xl bg-earth-50/50 dark:bg-earth-900/50 p-4 rounded-md border border-earth-200 dark:border-earth-800 text-center">
+              <div className="pl-1 font-hindi text-xl bg-earth-50/50 dark:bg-earth-900/50 p-4 rounded-md border border-earth-200 dark:border-earth-800 text-center flex items-center justify-center">
                 {verse.hindi}
               </div>
             </div>
@@ -152,7 +152,7 @@ const VerseViewer = ({ verse, totalVerses, onNext, onPrevious }: VerseViewerProp
           
           <TabsContent value="english" className="mt-4 animate-fade-in">
             <div className="verse-content relative overflow-hidden">
-              <div className="pl-1 text-xl bg-earth-50/50 dark:bg-earth-900/50 p-4 rounded-md border border-earth-200 dark:border-earth-800 text-center">
+              <div className="pl-1 text-xl bg-earth-50/50 dark:bg-earth-900/50 p-4 rounded-md border border-earth-200 dark:border-earth-800 text-center flex items-center justify-center">
                 {verse.english}
               </div>
             </div>

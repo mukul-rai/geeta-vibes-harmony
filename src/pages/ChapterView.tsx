@@ -85,8 +85,8 @@ const ChapterView = () => {
       <MobileLayout currentRoute="/chapters">
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <div className="mb-4 text-saffron-500">
-              <BookOpen size={48} className="mx-auto" />
+            <div className="mb-4 text-saffron-500 flex justify-center">
+              <BookOpen size={48} />
             </div>
             <h2 className="text-2xl font-serif font-medium text-earth-900 dark:text-earth-100 mb-2">Loading verse...</h2>
             <p className="text-earth-700 dark:text-earth-300">Please wait while we retrieve the wisdom.</p>
@@ -111,7 +111,7 @@ const ChapterView = () => {
                 <h1 className="mt-2 text-2xl font-serif font-medium text-earth-900 dark:text-earth-100">
                   {currentChapter.name}
                 </h1>
-                <p className="mt-1 text-lg font-sanskrit text-earth-800 dark:text-earth-200 text-center">
+                <p className="mt-1 text-lg font-sanskrit text-earth-800 dark:text-earth-200">
                   {currentChapter.nameSanskrit}
                 </p>
               </div>
