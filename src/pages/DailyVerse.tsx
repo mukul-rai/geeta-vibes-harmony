@@ -1,11 +1,13 @@
 
 import { useEffect, useState } from 'react';
-import { Share2 } from 'lucide-react';
+import { Share2, RefreshCw } from 'lucide-react';
 import { getVerse } from '../data/verses';
 import { Verse } from '../data/verses';
 import MobileLayout from '../components/MobileLayout';
 import { Progress } from "@/components/ui/progress";
-import { getProgress } from '../services/progressService';
+import { getProgress, markVerseAsRead } from '../services/progressService';
+import { Skeleton } from "@/components/ui/skeleton";
+import { useToast } from "@/hooks/use-toast";
 
 const DailyVerse = () => {
   const [verse, setVerse] = useState<Verse | null>(null);
@@ -13,6 +15,8 @@ const DailyVerse = () => {
   const [progress, setProgress] = useState(getProgress());
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,16 +35,11 @@ const DailyVerse = () => {
     
     setTodayDate(dateStr);
     setProgress(getProgress());
-
-    // Add a small delay before showing content for smooth animation
-    setTimeout(() => {
-      setIsLoaded(true);
-      setIsLoading(false);
-    }, 500);
   }, []);
 
   const fetchRandomVerse = () => {
     setIsLoading(true);
+    setIsLoaded(false);
     
     // Generate a random chapter (1-18)
     const randomChapter = Math.floor(Math.random() * 18) + 1;
@@ -52,26 +51,37 @@ const DailyVerse = () => {
     // Get the random verse
     const randomDailyVerse = getVerse(randomChapter, randomVerse);
     
-    setVerse(randomDailyVerse);
+    // Simulate network loading delay
+    setTimeout(() => {
+      setVerse(randomDailyVerse);
+      
+      // Mark this verse as read in the progress
+      if (randomDailyVerse) {
+        markVerseAsRead(randomDailyVerse.chapter, randomDailyVerse.verse);
+        setProgress(getProgress());
+      }
+      
+      setIsLoaded(true);
+      setIsLoading(false);
+      setIsRefreshing(false);
+    }, 1000);
   };
 
   const handleRefreshVerse = () => {
-    setIsLoaded(false);
-    setIsLoading(true);
+    if (isRefreshing) return;
     
-    // Small delay to show loading animation
-    setTimeout(() => {
-      fetchRandomVerse();
-      
-      // Add a small delay before showing content for smooth animation
-      setTimeout(() => {
-        setIsLoaded(true);
-        setIsLoading(false);
-      }, 300);
-    }, 300);
+    setIsRefreshing(true);
+    
+    toast({
+      title: "Refreshing verse",
+      description: "Finding a new daily verse for you...",
+      duration: 1500,
+    });
+    
+    fetchRandomVerse();
   };
 
-  if (isLoading) {
+  if (isLoading && !isRefreshing) {
     return (
       <MobileLayout currentRoute="/daily-verse">
         <div className="flex items-center justify-center h-screen">
@@ -84,16 +94,6 @@ const DailyVerse = () => {
             </div>
             <div className="animate-pulse text-saffron-600">Loading verse of the day...</div>
           </div>
-        </div>
-      </MobileLayout>
-    );
-  }
-
-  if (!verse) {
-    return (
-      <MobileLayout currentRoute="/daily-verse">
-        <div className="flex items-center justify-center h-screen">
-          <div className="animate-pulse text-saffron-600">Loading verse of the day...</div>
         </div>
       </MobileLayout>
     );
@@ -121,42 +121,64 @@ const DailyVerse = () => {
         </div>
         
         {/* Verse Card with gentle rise and shine animation */}
-        <div className={`bg-white rounded-lg shadow-sm p-6 mb-6 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0 shadow-md' : 'opacity-0 translate-y-4'}`}>
-          <div className="flex justify-between items-center mb-4">
-            <span className="text-xs font-medium bg-saffron-100 text-saffron-800 rounded-full px-3 py-1 flex items-center justify-center">
-              Chapter {verse.chapter} · Verse {verse.verse}
-            </span>
-            <div className="flex gap-2">
-              <button 
-                onClick={handleRefreshVerse}
-                className="text-earth-600 p-2 hover:text-saffron-600 transition-colors duration-300 bg-earth-50 rounded-full flex items-center justify-center"
-                aria-label="Refresh verse"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
-                  <path d="M21 3v5h-5" />
-                  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
-                  <path d="M3 21v-5h5" />
-                </svg>
-              </button>
-              <button className="text-earth-600 p-2 hover:text-saffron-600 transition-colors duration-300 bg-earth-50 rounded-full flex items-center justify-center">
-                <Share2 size={18} />
-              </button>
-            </div>
-          </div>
-          
-          <div className="space-y-4">
-            <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <h3 className="text-sm font-medium text-earth-700 mb-1">Sanskrit</h3>
-              <p className="text-lg font-sanskrit text-earth-900">{verse.sanskrit}</p>
+        {isRefreshing ? (
+          <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div className="flex justify-between items-center mb-4">
+              <Skeleton className="h-6 w-24" />
+              <div className="flex gap-2">
+                <Skeleton className="h-9 w-9 rounded-full" />
+                <Skeleton className="h-9 w-9 rounded-full" />
+              </div>
             </div>
             
-            <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
-              <h3 className="text-sm font-medium text-earth-700 mb-1">English</h3>
-              <p className="text-earth-800">{verse.english}</p>
+            <div className="space-y-4">
+              <div>
+                <Skeleton className="h-4 w-20 mb-2" />
+                <Skeleton className="h-20 w-full" />
+              </div>
+              
+              <div>
+                <Skeleton className="h-4 w-20 mb-2" />
+                <Skeleton className="h-16 w-full" />
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          verse && (
+            <div className={`bg-white rounded-lg shadow-sm p-6 mb-6 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0 shadow-md' : 'opacity-0 translate-y-4'}`}>
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-xs font-medium bg-saffron-100 text-saffron-800 rounded-full px-3 py-1 flex items-center justify-center">
+                  Chapter {verse.chapter} · Verse {verse.verse}
+                </span>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={handleRefreshVerse}
+                    disabled={isRefreshing}
+                    className="text-earth-600 p-2 hover:text-saffron-600 transition-colors duration-300 bg-earth-50 rounded-full flex items-center justify-center"
+                    aria-label="Refresh verse"
+                  >
+                    <RefreshCw size={18} className={isRefreshing ? "animate-spin" : ""} />
+                  </button>
+                  <button className="text-earth-600 p-2 hover:text-saffron-600 transition-colors duration-300 bg-earth-50 rounded-full flex items-center justify-center">
+                    <Share2 size={18} />
+                  </button>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                  <h3 className="text-sm font-medium text-earth-700 mb-1">Sanskrit</h3>
+                  <p className="text-lg font-sanskrit text-earth-900">{verse.sanskrit}</p>
+                </div>
+                
+                <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
+                  <h3 className="text-sm font-medium text-earth-700 mb-1">English</h3>
+                  <p className="text-earth-800">{verse.english}</p>
+                </div>
+              </div>
+            </div>
+          )
+        )}
         
         {/* Inspiration with soft glow animation */}
         <div className={`text-center italic text-earth-700 px-4 mb-6 transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
