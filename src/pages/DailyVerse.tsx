@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Share2, RefreshCw } from 'lucide-react';
 import { getVerse } from '../data/verses';
@@ -86,13 +85,7 @@ const DailyVerse = () => {
       <MobileLayout currentRoute="/daily-verse">
         <div className="flex items-center justify-center h-screen">
           <div className="flex flex-col items-center">
-            <div className="w-16 h-16 relative mb-4">
-              <div className="absolute inset-0 rounded-full bg-saffron-100 animate-pulse"></div>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-full h-full p-2 animate-spin" style={{ animationDuration: '3s' }}>
-                <path fill="#E9B872" d="M256,56.4c-41.4,0-75,33.6-75,75s33.6,75,75,75s75-33.6,75-75S297.4,56.4,256,56.4z M256,181.4c-27.6,0-50-22.4-50-50s22.4-50,50-50s50,22.4,50,50S283.6,181.4,256,181.4z"/>
-              </svg>
-            </div>
-            <div className="animate-pulse text-saffron-600">Loading verse of the day...</div>
+            <p className="text-earth-700 text-lg">Loading verse of the day...</p>
           </div>
         </div>
       </MobileLayout>
