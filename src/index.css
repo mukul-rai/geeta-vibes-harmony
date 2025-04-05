@@ -1,93 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 40 55% 98%;
-  --foreground: 24 25% 16%;
-  
-  --card: 0 0% 100%;
-  --card-foreground: 24 25% 16%;
-  
-  --popover: 0 0% 100%;
-  --popover-foreground: 24 25% 16%;
-  
-  --primary: 15 60% 60%;
-  --primary-foreground: 0 0% 100%;
-  
-  --secondary: 30 30% 96%;
-  --secondary-foreground: 15 60% 60%;
-  
-  --muted: 30 40% 96%;
-  --muted-foreground: 24 15% 48%;
-  
-  --accent: 30 30% 96%;
-  --accent-foreground: 15 60% 60%;
-  
-  --destructive: 0 80% 60%;
-  --destructive-foreground: 0 0% 100%;
-  
-  --border: 30 20% 87%;
-  --input: 30 20% 87%;
-  --ring: 15 60% 60%;
-  
-  --radius: 0.5rem;
-  
-  --sidebar-background: 27 15% 9%;
-  --sidebar-foreground: 30 25% 96%;
-  --sidebar-primary: 15 60% 60%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 27 15% 15%;
-  --sidebar-accent-foreground: 30 25% 96%;
-  --sidebar-border: 27 8% 18%;
-  --sidebar-ring: 15 60% 60%;
-}
-
-.dark {
-  --background: 27 18% 7%;
-  --foreground: 30 25% 98%;
-  
-  --card: 27 15% 13%;
-  --card-foreground: 30 25% 98%;
-  
-  --popover: 27 18% 7%;
-  --popover-foreground: 30 25% 98%;
-  
-  --primary: 15 60% 60%;
-  --primary-foreground: 0 0% 100%;
-  
-  --secondary: 27 12% 17%;
-  --secondary-foreground: 30 25% 98%;
-  
-  --muted: 27 10% 16%;
-  --muted-foreground: 30 25% 90%;
-  
-  --accent: 27 12% 17%;
-  --accent-foreground: 30 25% 98%;
-  
-  --destructive: 0 65% 50%;
-  --destructive-foreground: 0 0% 100%;
-  
-  --border: 27 8% 18%;
-  --input: 27 8% 18%;
-  --ring: 15 60% 60%;
-}
-
 @layer base {
-  body {
-    @apply bg-earth-50 dark:bg-earth-900 text-earth-900 dark:text-earth-100;
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --earth-50: #F8F7F2;
+    --earth-100: #EAE8DD;
+    --earth-200: #D5D0C2;
+    --earth-300: #BFB8A6;
+    --earth-400: #AAA08B;
+    --earth-500: #958870;
+    --earth-600: #776D5A;
+    --earth-700: #595243;
+    --earth-800: #3C372D;
+    --earth-900: #1E1B16;
+    --earth-950: #0F0E0B;
+
+    --saffron-50: #FFF9EB;
+    --saffron-100: #FFEFC8;
+    --saffron-200: #FFE090;
+    --saffron-300: #FFCB57;
+    --saffron-400: #FFB72E;
+    --saffron-500: #FFA317;
+    --saffron-600: #E17E00;
+    --saffron-700: #B85C00;
+    --saffron-800: #964807;
+    --saffron-900: #7A3C0B;
+    --saffron-950: #461F04;
+
+    --maroon-50: #FCF4F4;
+    --maroon-100: #F9E9E9;
+    --maroon-200: #F5D7D7;
+    --maroon-300: #EEBEBE;
+    --maroon-400: #E39D9D;
+    --maroon-500: #D56D6D;
+    --maroon-600: #C44B4B;
+    --maroon-700: #B03838;
+    --maroon-800: #8E2D2D;
+    --maroon-900: #752E2E;
+    --maroon-950: #411414;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    /* Dark mode vars remain the same */
   }
 }
 
-.container-custom {
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  @font-face {
+    font-family: 'Sanskrit';
+    src: url('/fonts/sanskrit.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Hindi';
+    src: url('/fonts/hindi.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+.font-sanskrit {
+  font-family: 'Sanskrit', sans-serif;
+}
+
+.font-hindi {
+  font-family: 'Hindi', sans-serif;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-shine {
+  animation: shine 3s ease-in-out infinite;
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  max-width: 1200px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 @layer components {
