@@ -39,7 +39,6 @@ const BookmarkList = ({ onClose }: BookmarkListProps) => {
   };
   
   const navigateToVerse = (chapter: number, verse: number) => {
-    onClose();
     navigate(`/chapters/${chapter}/${verse}`);
   };
   
@@ -52,18 +51,29 @@ const BookmarkList = ({ onClose }: BookmarkListProps) => {
     });
   };
   
+  const Header = () => {
+    // Only show header with close button when used as a modal
+    if (onClose === null || onClose === undefined || onClose.toString() === "() => {}") {
+      return null;
+    }
+    
+    return (
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-serif text-earth-900 dark:text-earth-100">Your Bookmarks</h2>
+        <button 
+          onClick={onClose}
+          className="p-1.5 text-earth-500 hover:text-earth-700 dark:text-earth-400 dark:hover:text-earth-200"
+        >
+          <X size={18} />
+        </button>
+      </div>
+    );
+  };
+  
   if (bookmarks.length === 0) {
     return (
       <div className={`bg-white dark:bg-earth-800 rounded-lg shadow-md p-5 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-serif text-earth-900 dark:text-earth-100">Your Bookmarks</h2>
-          <button 
-            onClick={onClose}
-            className="p-1.5 text-earth-500 hover:text-earth-700 dark:text-earth-400 dark:hover:text-earth-200"
-          >
-            <X size={18} />
-          </button>
-        </div>
+        <Header />
         
         <div className="py-8 text-center">
           <div className="w-16 h-16 mx-auto mb-4 text-earth-300 dark:text-earth-600">
@@ -82,15 +92,7 @@ const BookmarkList = ({ onClose }: BookmarkListProps) => {
 
   return (
     <div className={`bg-white dark:bg-earth-800 rounded-lg shadow-md p-5 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-serif text-earth-900 dark:text-earth-100">Your Bookmarks</h2>
-        <button 
-          onClick={onClose}
-          className="p-1.5 text-earth-500 hover:text-earth-700 dark:text-earth-400 dark:hover:text-earth-200"
-        >
-          <X size={18} />
-        </button>
-      </div>
+      <Header />
       
       <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">
         {bookmarks.map((bookmark, index) => {

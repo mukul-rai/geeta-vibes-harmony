@@ -18,6 +18,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
+import ProgressTracking from "./pages/ProgressTracking";
 
 // Create a custom CSS class to restrict max width for mobile app experience
 import './index.css';
@@ -53,6 +54,7 @@ const AppRoutes = () => {
         <Route path="/daily-verse" element={<DailyVerse />} />
         <Route path="/meditate" element={<Meditate />} />
         <Route path="/about" element={<About />} />
+        <Route path="/progress" element={<ProgressTracking />} />
         <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />

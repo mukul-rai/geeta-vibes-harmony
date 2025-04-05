@@ -1,5 +1,5 @@
 
-import { Home, BookOpen, SunMoon, Timer, User } from 'lucide-react';
+import { Home, BookOpen, SunMoon, Timer, User, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 
@@ -14,7 +14,7 @@ const BottomNav = ({ currentRoute }: BottomNavProps) => {
     { icon: Home, label: 'Home', path: '/' },
     { icon: BookOpen, label: 'Chapters', path: '/chapters' },
     { icon: SunMoon, label: 'Verse', path: '/daily-verse' },
-    { icon: Timer, label: 'Meditate', path: '/meditate' },
+    { icon: TrendingUp, label: 'Progress', path: '/progress' },
     { icon: User, label: 'Profile', path: isAuthenticated ? '/profile' : '/login' }
   ];
 
