@@ -164,7 +164,7 @@
 
 @layer components {
   .chapter-card {
-    @apply bg-white/90 dark:bg-dark-card/90 backdrop-blur-sm rounded-xl p-6 border border-borderCustom-light dark:border-dark-border shadow-sm cursor-pointer transition-all duration-300 relative hover:shadow-md;
+    @apply bg-white/90 dark:bg-dark-card backdrop-blur-sm rounded-xl p-6 border border-borderCustom-light dark:border-dark-border shadow-sm cursor-pointer transition-all duration-300 relative hover:shadow-md;
   }
 
   .chapter-card:hover {
@@ -209,7 +209,7 @@
   }
   
   .glass-effect {
-    @apply bg-white/80 dark:bg-dark-card/80 backdrop-blur-md border border-white/10 dark:border-dark-border/50;
+    @apply bg-white/80 dark:bg-dark-card backdrop-blur-md border border-white/10 dark:border-dark-border;
   }
   
   .interactive-button {
