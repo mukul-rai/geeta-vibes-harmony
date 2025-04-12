@@ -23,7 +23,7 @@ const MobileLayout = ({ children, currentRoute }: MobileLayoutProps) => {
   }, [currentRoute]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-backgroundCustom dark:bg-dark-DEFAULT max-w-md mx-auto relative overflow-hidden mandala-bg spiritual-pattern">
+    <div className="flex flex-col min-h-screen bg-backgroundCustom dark:bg-dark max-w-md mx-auto relative overflow-hidden mandala-bg spiritual-pattern">
       {/* Subtle decorative elements */}
       <div className="fixed top-0 left-0 w-full h-72 bg-gradient-to-b from-saffron-100/30 to-transparent dark:from-saffron-900/10 dark:to-transparent pointer-events-none z-0"></div>
       
