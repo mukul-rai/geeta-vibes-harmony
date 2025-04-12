@@ -67,7 +67,7 @@ const FeaturedChaptersCarousel = () => {
   }, [api]);
 
   return (
-    <div>
+    <div className="px-1">
       <Carousel
         opts={{ loop: true }}
         className="w-full"
@@ -75,9 +75,9 @@ const FeaturedChaptersCarousel = () => {
       >
         <CarouselContent>
           {featuredChapters.map((chapter) => (
-            <CarouselItem key={chapter.id}>
+            <CarouselItem key={chapter.id} className="pl-2">
               <div 
-                className="bg-gradient-to-br from-saffron-50 to-earth-50 dark:from-earth-800 dark:to-earth-900 rounded-lg p-5 shadow-md border border-earth-100 dark:border-earth-700 h-full"
+                className="bg-gradient-to-br from-saffron-50 to-earth-50 dark:from-earth-800 dark:to-earth-900 rounded-lg p-5 shadow-md border border-earth-100 dark:border-earth-700 h-full transform transition-all duration-300 hover:scale-[1.01] hover:shadow-lg"
                 onClick={() => navigate(`/chapters/${chapter.id}`)}
               >
                 <div className="flex justify-between items-start mb-2">
@@ -89,7 +89,7 @@ const FeaturedChaptersCarousel = () => {
                       {chapter.nameSanskrit}
                     </p>
                   </div>
-                  <span className="bg-saffron-100 dark:bg-saffron-900/30 text-saffron-600 dark:text-saffron-400 rounded-full h-8 w-8 flex items-center justify-center font-medium text-sm">
+                  <span className="bg-gradient-to-br from-saffron-100 to-saffron-200 dark:from-saffron-900/30 dark:to-saffron-800/30 text-saffron-600 dark:text-saffron-400 rounded-full h-8 w-8 flex items-center justify-center font-medium text-sm shadow-sm">
                     {chapter.id}
                   </span>
                 </div>
@@ -111,7 +111,7 @@ const FeaturedChaptersCarousel = () => {
                     {chapter.verses} verses
                   </span>
                   <button 
-                    className="text-saffron-600 dark:text-saffron-400 text-sm flex items-center gap-1 group"
+                    className="text-saffron-600 dark:text-saffron-400 text-sm flex items-center gap-1 group bg-saffron-50/80 dark:bg-saffron-900/20 px-2 py-1 rounded-full transition-colors hover:bg-saffron-100 dark:hover:bg-saffron-800/30"
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate(`/chapters/${chapter.id}`);
@@ -126,14 +126,14 @@ const FeaturedChaptersCarousel = () => {
           ))}
         </CarouselContent>
 
-        {/* Dot indicators */}
-        <div className="flex justify-center gap-1 mt-3">
+        {/* Enhanced dot indicators */}
+        <div className="flex justify-center gap-1 mt-4">
           {featuredChapters.map((_, index) => (
             <button
               key={index}
               className={`h-2 rounded-full transition-all ${
                 current === index 
-                  ? "w-4 bg-saffron-500 dark:bg-saffron-400" 
+                  ? "w-6 bg-gradient-to-r from-saffron-400 to-saffron-500 dark:from-saffron-600 dark:to-saffron-500 shadow-sm" 
                   : "w-2 bg-earth-200 dark:bg-earth-700"
               }`}
               onClick={() => api?.scrollTo(index)}

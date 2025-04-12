@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -229,6 +230,10 @@ export default {
 					'50%': {
 						transform: 'translateY(-4px)'
 					}
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-200% 0' },
+					'100%': { backgroundPosition: '200% 0' }
 				}
 			},
 			animation: {
@@ -238,7 +243,8 @@ export default {
 				'fade-up': 'fade-up 0.6s ease-out',
 				'page-transition': 'page-transition 0.5s ease-out',
 				'gentle-pulse': 'gentle-pulse 3s infinite ease-in-out',
-				'gentle-float': 'gentle-float 4s infinite ease-in-out'
+				'gentle-float': 'gentle-float 4s infinite ease-in-out',
+				'shimmer': 'shimmer 2s infinite linear'
 			}
 		}
 	},
