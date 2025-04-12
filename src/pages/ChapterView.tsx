@@ -95,6 +95,7 @@ const ChapterView = () => {
         title: "Verse Marked as Read",
         description: "Your progress has been updated.",
         duration: 2000,
+        className: "bg-saffron-50 border-saffron-200 text-earth-800 dark:bg-earth-800 dark:border-earth-700 dark:text-saffron-300"
       });
     }
   };
@@ -111,6 +112,7 @@ const ChapterView = () => {
           title: "Bookmark Removed",
           description: `Chapter ${chapter}, Verse ${verse} has been removed from your bookmarks.`,
           duration: 2000,
+          className: "bg-saffron-50 border-saffron-200 text-earth-800 dark:bg-earth-800 dark:border-earth-700 dark:text-saffron-300"
         });
       } else {
         addBookmark(chapter, verse);
@@ -119,6 +121,7 @@ const ChapterView = () => {
           title: "Bookmark Added",
           description: `Chapter ${chapter}, Verse ${verse} has been added to your bookmarks.`,
           duration: 2000,
+          className: "bg-saffron-50 border-saffron-200 text-earth-800 dark:bg-earth-800 dark:border-earth-700 dark:text-saffron-300"
         });
       }
     }
@@ -132,8 +135,8 @@ const ChapterView = () => {
     return (
       <MobileLayout currentRoute="/chapters">
         <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <div className="mb-4 text-saffron-500">
+          <div className="text-center glass-effect p-8 rounded-xl">
+            <div className="mb-4 text-saffron-500 animate-gentle-pulse">
               <BookOpen size={48} className="mx-auto" />
             </div>
             <h2 className="text-2xl font-serif font-medium text-earth-900 dark:text-earth-100 mb-2">Loading verse...</h2>
@@ -149,18 +152,18 @@ const ChapterView = () => {
       <Header showBackButton={true} onBack={handleBack} />
       
       <div className="pt-16 px-4 pb-24">
-        {/* Chapter Header with improved animations */}
-        <div className={`mb-6 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        {/* Chapter Header with enhanced styling */}
+        <div className={`mb-6 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="mt-4">
             <div className="flex justify-between items-start">
               <div>
-                <span className="text-xs font-medium bg-saffron-100 dark:bg-saffron-900/50 text-saffron-800 dark:text-saffron-300 rounded-full px-3 py-1">
+                <span className="text-xs font-medium bg-saffron-100/80 dark:bg-saffron-900/50 text-saffron-800 dark:text-saffron-300 rounded-full px-3 py-1 shadow-sm">
                   Chapter {currentChapter.id}
                 </span>
                 <h1 className="mt-2 text-2xl font-serif font-medium text-earth-900 dark:text-earth-100">
                   {currentChapter.name}
                 </h1>
-                <p className="mt-1 text-lg font-sanskrit text-earth-800 dark:text-earth-200">
+                <p className="mt-1 text-lg font-sanskrit text-earth-800/90 dark:text-earth-200/90">
                   {currentChapter.nameSanskrit}
                 </p>
               </div>
@@ -168,10 +171,10 @@ const ChapterView = () => {
               <div className="flex space-x-2">
                 <button
                   onClick={toggleBookmark}
-                  className={`p-2 rounded-full transition-all duration-300 ${
+                  className={`p-2.5 rounded-full transition-all duration-300 interactive-button ${
                     bookmarked 
-                      ? 'bg-saffron-100 dark:bg-saffron-900/50 text-saffron-600 dark:text-saffron-400'
-                      : 'bg-earth-100 dark:bg-earth-800 text-earth-600 dark:text-earth-400 hover:bg-saffron-100 dark:hover:bg-saffron-900/50 hover:text-saffron-600 dark:hover:text-saffron-400'
+                      ? 'bg-saffron-100 dark:bg-saffron-900/50 text-saffron-600 dark:text-saffron-400 shadow-inner'
+                      : 'bg-earth-100/80 dark:bg-earth-800/80 text-earth-600 dark:text-earth-400 hover:bg-saffron-100/80 dark:hover:bg-saffron-900/50 hover:text-saffron-600 dark:hover:text-saffron-400 shadow-sm'
                   }`}
                   aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
                 >
@@ -181,10 +184,10 @@ const ChapterView = () => {
                 <button
                   onClick={handleMarkAsRead}
                   disabled={isRead}
-                  className={`p-2 rounded-full ${
+                  className={`p-2.5 rounded-full shadow-sm interactive-button ${
                     isRead 
-                      ? 'bg-saffron-100 dark:bg-saffron-900/50 text-saffron-600 dark:text-saffron-400 cursor-not-allowed' 
-                      : 'bg-saffron-500 text-white hover:bg-saffron-600'
+                      ? 'bg-saffron-100/80 dark:bg-saffron-900/50 text-saffron-600 dark:text-saffron-400 cursor-not-allowed shadow-inner' 
+                      : 'bg-saffron-500/90 text-white hover:bg-saffron-600'
                   }`}
                   aria-label={isRead ? "Already marked as read" : "Mark as read"}
                 >
@@ -193,7 +196,7 @@ const ChapterView = () => {
                 
                 <button
                   onClick={() => setShowStats(!showStats)}
-                  className="p-2 rounded-full bg-earth-100 dark:bg-earth-800 text-earth-600 dark:text-earth-400 hover:bg-saffron-100 dark:hover:bg-saffron-900/50 hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors"
+                  className="p-2.5 rounded-full bg-earth-100/80 dark:bg-earth-800/80 text-earth-600 dark:text-earth-400 hover:bg-saffron-100/80 dark:hover:bg-saffron-900/50 hover:text-saffron-600 dark:hover:text-saffron-400 transition-colors interactive-button shadow-sm"
                   aria-label="View reading stats"
                 >
                   <BarChart2 size={18} />
@@ -203,22 +206,22 @@ const ChapterView = () => {
           </div>
         </div>
         
-        {/* Stats panel that slides down when toggled */}
+        {/* Stats panel with smoother transitions */}
         {showStats && (
-          <div className="mb-6">
+          <div className="mb-6 animate-fade-in">
             <ReadingStats onClose={() => setShowStats(false)} />
           </div>
         )}
         
-        {/* Bookmarks panel that slides down when toggled */}
+        {/* Bookmarks panel with smoother transitions */}
         {showBookmarks && (
-          <div className="mb-6">
+          <div className="mb-6 animate-fade-in">
             <BookmarkList onClose={() => setShowBookmarks(false)} />
           </div>
         )}
         
-        {/* Enhanced Verse Viewer */}
-        <div className={`transition-all duration-500 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        {/* Enhanced Verse Viewer with smoother transitions */}
+        <div className={`transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           {currentVerse && (
             <VerseViewer 
               verse={currentVerse} 
@@ -229,11 +232,11 @@ const ChapterView = () => {
           )}
         </div>
         
-        {/* Interactive element - toggle bookmark list button */}
-        <div className={`fixed bottom-20 right-4 transition-all duration-500 delay-200 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+        {/* Interactive element with enhanced styling */}
+        <div className={`fixed bottom-20 right-4 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
           <button
             onClick={() => setShowBookmarks(!showBookmarks)}
-            className="bg-white dark:bg-earth-800 shadow-lg rounded-full p-3 text-earth-700 dark:text-earth-300 hover:text-saffron-600 dark:hover:text-saffron-400 hover:shadow-xl transition-all duration-300 hover:scale-110"
+            className="glass-effect shadow-lg rounded-full p-3.5 text-earth-700 dark:text-earth-300 hover:text-saffron-600 dark:hover:text-saffron-400 hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95"
             aria-label="Toggle bookmarks"
           >
             <Bookmark size={20} />

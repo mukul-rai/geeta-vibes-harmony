@@ -37,11 +37,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
-  // Icon component with reduced brightness for better eye comfort
+  // Enhanced icon component
   const ThemeIcon = () => {
     return theme === 'dark' ? 
-      <Sun className="h-5 w-5 text-saffron-400/90" /> : 
-      <Moon className="h-5 w-5 text-earth-700/90" />;
+      <Sun className="h-5 w-5 text-saffron-400 transition-transform duration-300 animate-gentle-pulse" /> : 
+      <Moon className="h-5 w-5 text-earth-700 transition-transform duration-300" />;
   };
 
   return (
