@@ -109,20 +109,20 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
   }
 
   @font-face {
-    font-family: 'Sanskrit';
-    src: url('/fonts/sanskrit.woff2') format('woff2');
+    font-family: 'Noto Serif Devanagari';
+    src: url('/fonts/noto-serif-devanagari.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: 'Hindi';
-    src: url('/fonts/hindi.woff2') format('woff2');
+    font-family: 'Noto Sans Devanagari';
+    src: url('/fonts/noto-sans-devanagari.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -130,11 +130,11 @@
 }
 
 .font-sanskrit {
-  font-family: 'Sanskrit', sans-serif;
+  font-family: 'Noto Serif Devanagari', serif;
 }
 
 .font-hindi {
-  font-family: 'Hindi', sans-serif;
+  font-family: 'Noto Sans Devanagari', 'Mukta', sans-serif;
 }
 
 @keyframes shine {

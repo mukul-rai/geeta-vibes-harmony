@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -169,14 +170,14 @@ export default {
 				}
 			},
 			fontFamily: {
-				sans: ['Noto Serif Devanagari', 'serif'],
+				sans: ['Noto Sans', 'Noto Sans Devanagari', 'Mukta', 'sans-serif'],
 				serif: ['Noto Serif Devanagari', 'serif'],
 				sanskrit: ['Noto Serif Devanagari', 'serif'],
-				devanagari: ['Noto Serif Devanagari', 'serif'],
-				hindi: ['Noto Serif Devanagari', 'serif'],
+				devanagari: ['Noto Sans Devanagari', 'Noto Serif Devanagari', 'serif'],
+				hindi: ['Noto Sans Devanagari', 'Mukta', 'sans-serif'],
 				heading: ['Noto Serif Devanagari', 'serif'],
 				display: ['Noto Serif Devanagari', 'serif'],
-				body: ['Noto Serif Devanagari', 'serif']
+				body: ['Noto Sans', 'Noto Sans Devanagari', 'Mukta', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
